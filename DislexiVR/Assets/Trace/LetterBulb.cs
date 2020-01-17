@@ -54,11 +54,13 @@ public class LetterBulb : MonoBehaviour
     {
         isNear = false;
 
+        //debug colors
         if (wand.debugMode && !isFuckingLit)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
 
+        currentDistance = 1;
         StopAllCoroutines();
     }
 
@@ -73,7 +75,7 @@ public class LetterBulb : MonoBehaviour
             }
 
             currentDistance = Vector3.Distance(transform.position, wand.transform.position);
-            if (currentDistance < bestDistance)
+            if (currentDistance < bestDistance || bestDistance == 0)
             {
                 bestDistance = currentDistance;
             }

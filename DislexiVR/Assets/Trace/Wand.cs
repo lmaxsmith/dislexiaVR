@@ -30,9 +30,10 @@ public class Wand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space);
+        //for debug
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            isCasting = !isCasting;
         }
     }
 
