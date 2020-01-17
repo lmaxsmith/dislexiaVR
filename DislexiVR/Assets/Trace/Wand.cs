@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wand : MonoBehaviour
 {
     [Tooltip("The diameter of the larges collision sphere (in meters)")]
-    public float roughPrecisionScale = .3f;
+    public float roughPrecisionScale = .5f;
 
     //collection of trigger colliders at various Distances from the tip of the wand. 
     Collider castingCollider;

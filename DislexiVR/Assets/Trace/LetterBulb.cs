@@ -11,10 +11,10 @@ public class LetterBulb : MonoBehaviour
     public bool isNear;
     public bool isFuckingLit;
 
-    public float currentDistance;
+    public float currentDistance = 1;
     [Tooltip("A score for this letterbulb measuring the closest the wand gets to the bulb " +
         "while casting as a function of the course cast distance. Out of 1.")]
-    public float bestDistance;
+    public float bestDistance = 1;
 
         //relationships
     private void Awake()
@@ -25,16 +25,14 @@ public class LetterBulb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        TryDebugColor();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isNear && wand.isCasting && !isFuckingLit)
-        {
-            OnLight();
-        }
     }
 
     public void OnWandEnter()
@@ -42,11 +40,11 @@ public class LetterBulb : MonoBehaviour
         isNear = true;
 
         //for testing in the editor scene
-        if (wand.debugMode && !isFuckingLit)
-        {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-        }
-
+        //if (wand.debugMode && !isFuckingLit)
+        //{
+        //    gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+        //}
+        currentDistance = 1;
         wandNearCoroutine = StartCoroutine(wandNear());
 
     }
@@ -55,12 +53,15 @@ public class LetterBulb : MonoBehaviour
         isNear = false;
 
         //debug colors
-        if (wand.debugMode && !isFuckingLit)
-        {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
-        }
+        //if (wand.debugMode && !isFuckingLit)
+        //{
+        //    gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
+        //}
 
         currentDistance = 1;
+
+        TryDebugColor();
+
         StopAllCoroutines();
     }
 
@@ -69,18 +70,25 @@ public class LetterBulb : MonoBehaviour
         while (true)
         {
             Debug.Log("in WandNear");
-            if (wand.isCasting && !isFuckingLit)
-            {
-                OnLight();
-            }
 
-            currentDistance = Vector3.Distance(transform.position, wand.transform.position);
-            if (currentDistance < bestDistance || bestDistance == 0)
+            //caluculate distances
+            currentDistance = Vector3.Distance(transform.position, wand.transform.position) / wand.roughPrecisionScale;
+            if (currentDistance < bestDistance)
             {
                 bestDistance = currentDistance;
             }
 
-            yield return new WaitForSeconds(.5f);
+            //control lighting the bulb
+            if (wand.isCasting && !isFuckingLit && currentDistance < .5f)
+            {
+                OnLight();
+            }
+
+
+            //color by distance
+            TryDebugColor();
+
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -94,4 +102,19 @@ public class LetterBulb : MonoBehaviour
         }
     }
 
+
+
+    #region ===================== debug and testing ==================================
+    void TryDebugColor()
+    {
+        //color by distance
+        if (wand.debugMode && !isFuckingLit)
+        {
+            gameObject.GetComponent<MeshRenderer>().material.color = new Color(1 - currentDistance, 0, 0, 1 - currentDistance);
+        }
+    }
+
+
+
+    #endregion
 }
