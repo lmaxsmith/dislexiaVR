@@ -7,40 +7,55 @@ public class Wand : MonoBehaviour
     [Tooltip("The diameter of the larges collision sphere (in meters)")]
     public float roughPrecisionScale = .3f;
 
-    //Collider roughCollider;
-    //Collider midCollider;
-    //Collider fineCollider;
-
-    Collider[] castingColliders = new Collider[5];
+    //collection of trigger colliders at various Distances from the tip of the wand. 
+    Collider castingCollider;
 
     public bool isCasting;
+
+    [Tooltip("Turn this on in the unit test scene.")]
+    public bool debugMode;
+
+    //relationships
+    private void Awake()
+    {
+        castingCollider = gameObject.GetComponent<Collider>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        //roughCollider = SetupColliders(roughPrecisionScale);
-        //midCollider = SetupColliders(roughPrecisionScale * .6f);
-        //fineCollider = SetupColliders(roughPrecisionScale * .3f);
-
-        //create each collider at varying sizes
-        for (int i = 0; i < castingColliders.Length; i++)
-        {
-            castingColliders[i] = SetupColliders(roughPrecisionScale / (castingColliders.Length - i));
-        }
-    }
-
-    Collider SetupColliders(float radius)
-    {
-        SphereCollider collider = gameObject.AddComponent<SphereCollider>();
-        collider.radius = radius;
-        collider.isTrigger = true;
-
-        return collider;
+        isCasting = false; //just in case we fuck it up in editor
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Space);
+        {
+
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        LetterBulb letterBulb;
+        if (letterBulb = other.gameObject.GetComponent<LetterBulb>())
+        {
+            Debug.Log("letterbulb collision detected.");
+            
+            letterBulb.OnWandEnter();
+        }
         
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        LetterBulb letterBulb;
+        if (letterBulb = other.gameObject.GetComponent<LetterBulb>())
+        {
+            Debug.Log("letterbulb collision exit.");
+            letterBulb.OnWandExit();
+
+        }
+
     }
 }
