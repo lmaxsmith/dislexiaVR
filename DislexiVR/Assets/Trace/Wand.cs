@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Wand : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Wand : MonoBehaviour
 
     [Tooltip("Turn this on in the unit test scene.")]
     public bool debugMode;
+
+    
 
     //relationships
     private void Awake()
@@ -31,10 +34,30 @@ public class Wand : MonoBehaviour
     void Update()
     {
         //for debug
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (debugMode)
         {
-            isCasting = !isCasting;
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartCasting();
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                StopCasting();
+            }
+            transform.parent.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 2));
         }
+
+
+    }
+
+    //Main point of entry into Logan's pieces. Call this from control connectors. 
+    public void StartCasting()
+    {
+        isCasting = true;
+    }
+    public void StopCasting()
+    {
+        isCasting = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -59,4 +82,11 @@ public class Wand : MonoBehaviour
         }
 
     }
+
+    #region ======================  Debug =========================
+
+
+
+    #endregion
+
 }
