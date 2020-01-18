@@ -9,6 +9,7 @@ public class WandInteraction : MonoBehaviour
     // variables to identify particle prefab and spawnpoint
     public GameObject particleMagic;
     public GameObject spawnPoint;
+    public Material lineMat;
 
 
     /*
@@ -21,6 +22,7 @@ public class WandInteraction : MonoBehaviour
     public SteamVR_Action_Boolean castMagic;
 
     private LineRenderer currLine;
+    private int numClicks = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +33,31 @@ public class WandInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (interactable.attachedToHand && castMagic.GetState(SteamVR_Input_Sources.Any))
+        if (interactable.attachedToHand)
         {
-            GameObject magic = Instantiate(particleMagic, spawnPoint.transform.position, Quaternion.identity);
-            magic.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            if (castMagic.GetStateDown(SteamVR_Input_Sources.Any))
+            {
+                GameObject go = new GameObject();
+                currLine = go.AddComponent<LineRenderer>();
+                currLine.startWidth = 0.05f;
+                currLine.endWidth = 0.05f;
+                currLine.material = lineMat;
+                currLine.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-            //GameObject go = new GameObject();
-            //currLine = go.AddComponent<LineRenderer>();
+                numClicks = 0;
+            }
+            else if (castMagic.GetState(SteamVR_Input_Sources.Any))
+            {
+                GameObject magic = Instantiate(particleMagic, spawnPoint.transform.position, Quaternion.identity);
+                magic.transform.localScale = new Vector3(0.1f,0.1f, 0.1f);
+                currLine.SetVertexCount(numClicks + 1);
+                currLine.SetPosition(numClicks, spawnPoint.transform.position);
+                numClicks++;
+            }
         }
+    
+           
+  
     }
 
 }
