@@ -6,6 +6,7 @@ using UnityEngine;
 public class LetterConfiguration : ScriptableObject
 {
     public string letter;
+    public string wordRemainder;
 
     public int strokes = 1;
 

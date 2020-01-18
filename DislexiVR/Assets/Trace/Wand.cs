@@ -16,8 +16,8 @@ public class Wand : MonoBehaviour
     [Tooltip("Turn this on in the unit test scene.")]
     public bool debugMode;
 
-    
-
+    public UnityEvent StartCastingEvent;
+    public UnityEvent StopCastingEvent;
     //relationships
     private void Awake()
     {
@@ -54,10 +54,18 @@ public class Wand : MonoBehaviour
     public void StartCasting()
     {
         isCasting = true;
+        if (StartCastingEvent != null)
+        {
+            StartCastingEvent.Invoke();
+        }
     }
     public void StopCasting()
     {
         isCasting = false;
+        if (StopCastingEvent != null)
+        {
+            StopCastingEvent.Invoke();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

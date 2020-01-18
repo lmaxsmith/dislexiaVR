@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Letter : MonoBehaviour
 {
     [Tooltip("Number of strokes required to finish the letter.")]
-    public int strokes = 1;
+    public int strokesAllowed = 1;
+    public int strokesUsed = 0;
     [Tooltip("List of all letter bulbs contained within the letter.")]
     public LetterBulb[] letterBulbs;
     public GameObject letterBulbPrefab;
     public LetterConfiguration letterConfiguration;
 
 
-    private TextMesh textMesh;
+    public TextMeshProUGUI letterTextMesh;
+    public TextMeshProUGUI wordTextMesh;
+    
 
 
     //relationships
     private void Awake()
     {
-        textMesh = GetComponentInChildren<TextMesh>();
         letterBulbs = GetComponentsInChildren<LetterBulb>(true);
     }
 
@@ -27,7 +30,6 @@ public class Letter : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -37,8 +39,6 @@ public class Letter : MonoBehaviour
     [ContextMenu("Save Letter Configuration")]
     public void SaveConfiguration()
     {
-        textMesh = GetComponentInChildren<TextMesh>();
-
         //setup bulbs
         letterBulbs = GetComponentsInChildren<LetterBulb>();
         letterConfiguration.bulbPositions = new Vector3[letterBulbs.Length];
@@ -47,17 +47,24 @@ public class Letter : MonoBehaviour
             letterConfiguration.bulbPositions[i] = letterBulbs[i].transform.localPosition;
         }
 
-        letterConfiguration.strokes = strokes;
-        letterConfiguration.letter = textMesh.text;
+        letterConfiguration.strokes = strokesAllowed;
+        letterConfiguration.letter = letterTextMesh.text;
+        letterConfiguration.wordRemainder = wordTextMesh.text;
     }
 
     [ContextMenu("Load Letter Configuration")]
     public void LoadConfiguration()
     {
+        LoadConfiguration(letterConfiguration);
+    }
+    public void LoadConfiguration(LetterConfiguration letterConfiguration)
+    {
+        this.letterConfiguration = letterConfiguration;
+
         letterBulbs = GetComponentsInChildren<LetterBulb>();
         foreach (var bulb in letterBulbs)
         {
-            DestroyImmediate(bulb);
+            DestroyImmediate(bulb.gameObject);
         }
         letterBulbs = new LetterBulb[0];
         //setup bulbs
@@ -69,8 +76,10 @@ public class Letter : MonoBehaviour
         }
         letterBulbs = GetComponentsInChildren<LetterBulb>();
 
-        strokes = letterConfiguration.strokes;
-        textMesh.text = letterConfiguration.letter;
+        strokesAllowed = letterConfiguration.strokes;
+        letterTextMesh.text = letterConfiguration.letter;
+        wordTextMesh.text = letterConfiguration.wordRemainder;
+
     }
 
 }

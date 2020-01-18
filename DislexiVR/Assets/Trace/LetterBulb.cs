@@ -39,11 +39,6 @@ public class LetterBulb : MonoBehaviour
     {
         isNear = true;
 
-        //for testing in the editor scene
-        //if (wand.debugMode && !isFuckingLit)
-        //{
-        //    gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-        //}
         currentDistance = 1;
         wandNearCoroutine = StartCoroutine(wandNear());
 
@@ -51,12 +46,6 @@ public class LetterBulb : MonoBehaviour
     public void OnWandExit()
     {
         isNear = false;
-
-        //debug colors
-        //if (wand.debugMode && !isFuckingLit)
-        //{
-        //    gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
-        //}
 
         currentDistance = 1;
 
@@ -83,6 +72,7 @@ public class LetterBulb : MonoBehaviour
             {
                 OnLight();
             }
+
 
 
             //color by distance
