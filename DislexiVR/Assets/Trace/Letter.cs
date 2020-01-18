@@ -11,9 +11,14 @@ public class Letter : MonoBehaviour
     public GameObject letterBulbPrefab;
     public LetterConfiguration letterConfiguration;
 
+
+    private TextMesh textMesh;
+
+
     //relationships
     private void Awake()
     {
+        textMesh = GetComponentInChildren<TextMesh>();
         letterBulbs = GetComponentsInChildren<LetterBulb>(true);
     }
 
@@ -32,6 +37,8 @@ public class Letter : MonoBehaviour
     [ContextMenu("Save Letter Configuration")]
     public void SaveConfiguration()
     {
+        textMesh = GetComponentInChildren<TextMesh>();
+
         //setup bulbs
         letterBulbs = GetComponentsInChildren<LetterBulb>();
         letterConfiguration.bulbPositions = new Vector3[letterBulbs.Length];
@@ -41,11 +48,18 @@ public class Letter : MonoBehaviour
         }
 
         letterConfiguration.strokes = strokes;
+        letterConfiguration.letter = textMesh.text;
     }
 
     [ContextMenu("Load Letter Configuration")]
     public void LoadConfiguration()
     {
+        letterBulbs = GetComponentsInChildren<LetterBulb>();
+        foreach (var bulb in letterBulbs)
+        {
+            DestroyImmediate(bulb);
+        }
+        letterBulbs = new LetterBulb[0];
         //setup bulbs
         foreach (var bulbPosition in letterConfiguration.bulbPositions)
         {
@@ -53,8 +67,10 @@ public class Letter : MonoBehaviour
             bulbObject.transform.SetParent(transform);
             bulbObject.transform.localPosition = bulbPosition;
         }
+        letterBulbs = GetComponentsInChildren<LetterBulb>();
 
         strokes = letterConfiguration.strokes;
+        textMesh.text = letterConfiguration.letter;
     }
 
 }
