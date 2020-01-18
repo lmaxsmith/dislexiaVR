@@ -5,8 +5,10 @@ using UnityEngine;
 public class WizardController : MonoBehaviour
 {
     public Animator anim;
-    public AudioSource talkingAudio;
-    public AudioSource staffPoundAudio;
+
+    public AudioSource audioSource;
+    public AudioClip wizardTalkingClip;
+    public AudioClip staffPoundClip;
     bool playedAnim = false;
     bool wizardTalking = false;
     // Start is called before the first frame update
@@ -18,7 +20,7 @@ public class WizardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (talkingAudio.isPlaying)
+        if (audioSource.isPlaying)
         {
             
         } else
@@ -42,7 +44,8 @@ public class WizardController : MonoBehaviour
     }
     void WizardTalkingIntro()
     {
-        talkingAudio.Play();
+        audioSource.clip = wizardTalkingClip;
+        audioSource.Play();
         wizardTalking = true;
 
     }
@@ -53,6 +56,7 @@ public class WizardController : MonoBehaviour
     }
     void PlayPoundAudio()
     {
-        staffPoundAudio.Play();
+        audioSource.clip = staffPoundClip;
+        audioSource.Play();
     }
 }
