@@ -107,5 +107,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNear: 0
   isFuckingLit: 0
-  currentDistance: 0
-  bestDistance: 0
+  currentDistance: 1
+  bestDistance: 1
