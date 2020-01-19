@@ -23,6 +23,7 @@ public class Wand : MonoBehaviour
     //relationships
     private void Awake()
     {
+
         castingCollider = gameObject.GetComponent<Collider>();
         letter = FindObjectOfType<Letter>();
     }

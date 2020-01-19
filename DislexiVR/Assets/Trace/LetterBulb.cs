@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LetterBulb : MonoBehaviour
 {
-    Wand wand;
+     Wand wand;
     Letter letter;
     Coroutine wandNearCoroutine;
 

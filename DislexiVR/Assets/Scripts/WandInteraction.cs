@@ -48,6 +48,7 @@ public class WandInteraction : MonoBehaviour
     {
         if (gameManager.GameStarted)
         {
+            Wand wand = FindObjectOfType<Wand>();
             if (castMagic.GetStateDown(SteamVR_Input_Sources.RightHand))
             {
                 GameObject go = new GameObject();
@@ -59,13 +60,19 @@ public class WandInteraction : MonoBehaviour
                 audioSource.clip = pressClip;
                 audioSource.Play();
 
+                //talk to logan's wand
+                
+                wand.StartCasting();
+
                 numClicks = 0;
             }
-            /*    else if (castMagic.GetLastStateUp(SteamVR_Input_Sources.Any))
+                else if (castMagic.GetLastStateUp(SteamVR_Input_Sources.Any))
             {
+                wand.StopCasting();
+
                 audioSource.clip = releaseClip;
                 audioSource.Play();
-            } */
+            } 
             else if (castMagic.GetState(SteamVR_Input_Sources.RightHand))
             {
                 GameObject magic = Instantiate(particleMagic, spawnPoint.transform.position, Quaternion.identity);
