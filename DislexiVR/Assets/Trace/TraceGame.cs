@@ -68,7 +68,7 @@ public class TraceGame : MonoBehaviour
         letter.ResetLetter();
         letter.LoadConfiguration(availableLetters[letterIndex]);
 
-        currentRound.letter = letter.letterConfiguration.letter[0];
+        currentRound.letter = letter.letterConfiguration.letter.Substring(0, 1);
 
         StartAttempt(true);
 
@@ -331,7 +331,7 @@ public class TraceSession
 [Serializable]
 public class LetterRound
 {
-    public char letter;
+    public string letter;
 
     public int highScore;
     public int lowScore;
