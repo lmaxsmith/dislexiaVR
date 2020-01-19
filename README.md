@@ -37,7 +37,7 @@ Performance is collected from gameplay into a dashboard which provides an assess
 2. Open the project folder in Unity 2019.2.18
 3. Press **Play** in the editor. The wand is attached to the right controller.
 
-## Asssets
+## Assets
 
 All royalty free assets used in this project are listed below:
 
