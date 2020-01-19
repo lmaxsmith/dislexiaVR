@@ -38,3 +38,5 @@ MonoBehaviour:
   - {x: 0.055, y: -0.352, z: 0}
   - {x: -0.027, y: -0.35, z: 0}
   - {x: -0.094, y: -0.302, z: 0}
+  summonPrefab: {fileID: 5493510260481720653, guid: ec3ebddfd678ec741a6ad5bbc6a7915a,
+    type: 3}
