@@ -88,6 +88,8 @@ public class TraceGame : MonoBehaviour
         FindObjectOfType<voice_movement>().StartVoiceCommandListen();
         //SpellCastObject.SetActive(true);
 
+        currentSession.markEndTime();
+
         StartCoroutine(sendSessionData(currentSession));
     }
 
@@ -303,6 +305,7 @@ public class TraceGame : MonoBehaviour
 public class TraceSession
 {
     public string dateTime;
+    public string endDateTime;
     public List<LetterRound> letterRounds;
     public int proficiency;
 
@@ -312,6 +315,13 @@ public class TraceSession
         dateTime = (System.DateTime.UtcNow - epochStart).TotalSeconds.ToString();
 
         letterRounds = new List<LetterRound>();
+    }
+
+    public void markEndTime()
+    {
+        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        endDateTime = (System.DateTime.UtcNow - epochStart).TotalSeconds.ToString();
+
     }
 }
 
