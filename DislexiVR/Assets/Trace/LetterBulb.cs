@@ -6,6 +6,7 @@ using UnityEngine;
 public class LetterBulb : MonoBehaviour
 {
     Wand wand;
+    Letter letter;
     Coroutine wandNearCoroutine;
 
     public bool isNear;
@@ -20,6 +21,7 @@ public class LetterBulb : MonoBehaviour
     private void Awake()
     {
         wand = FindObjectOfType<Wand>();
+        letter = FindObjectOfType<Letter>();
     }
 
     // Start is called before the first frame update
@@ -35,15 +37,17 @@ public class LetterBulb : MonoBehaviour
     {
     }
 
+    public void ResetBulb()
+    {
+        isFuckingLit = false;
+        bestDistance = 1;
+        TryDebugColor();
+    }
+
     public void OnWandEnter()
     {
         isNear = true;
 
-        //for testing in the editor scene
-        //if (wand.debugMode && !isFuckingLit)
-        //{
-        //    gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-        //}
         currentDistance = 1;
         wandNearCoroutine = StartCoroutine(wandNear());
 
@@ -51,12 +55,6 @@ public class LetterBulb : MonoBehaviour
     public void OnWandExit()
     {
         isNear = false;
-
-        //debug colors
-        //if (wand.debugMode && !isFuckingLit)
-        //{
-        //    gameObject.GetComponent<MeshRenderer>().material.color = Color.blue;
-        //}
 
         currentDistance = 1;
 
@@ -69,20 +67,20 @@ public class LetterBulb : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("in WandNear");
 
             //caluculate distances
-            currentDistance = Vector3.Distance(transform.position, wand.transform.position) / wand.roughPrecisionScale;
+            currentDistance = Vector3.Distance(transform.position, wand.transform.position) / (wand.roughPrecisionScale * transform.parent.localScale.x);
             if (currentDistance < bestDistance)
             {
                 bestDistance = currentDistance;
             }
 
             //control lighting the bulb
-            if (wand.isCasting && !isFuckingLit && currentDistance < .5f)
+            if (wand.isCasting && !isFuckingLit && currentDistance < .4f)
             {
                 OnLight();
             }
+
 
 
             //color by distance
@@ -95,6 +93,7 @@ public class LetterBulb : MonoBehaviour
     public void OnLight()
     {
         isFuckingLit = true;
+        letter.ignitedBulbs++;
 
         if (wand.debugMode)
         {
