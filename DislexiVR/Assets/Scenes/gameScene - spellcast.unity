@@ -292,10 +292,10 @@ MonoBehaviour:
   letterBulbs: []
   letterBulbPrefab: {fileID: 8488187260180392794, guid: 5003802e18ccee34b8f03e96a10f97ea,
     type: 3}
-  letterConfiguration: {fileID: 11400000, guid: e32ab01bf11ff5742b92df541bf42041,
+  letterConfiguration: {fileID: 11400000, guid: 4ad6bb124595ead46b799bd5fa868c08,
     type: 2}
   inBoundsTime: 1
-  inBoundsThreshold: 0.75
+  inBoundsThreshold: 0.01
   summonedObject: {fileID: 5493510260481720653, guid: c7151aeacf0c9d64784a9db8a37a1bd1,
     type: 3}
   letterTextMesh: {fileID: 1593718280}
@@ -316,9 +316,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generalProficiency: 0
   availableLetters:
-  - {fileID: 11400000, guid: 8e0ddfa639a73c846bfab012f793c70e, type: 2}
-  - {fileID: 11400000, guid: e45499a2894658b409a38285e496e993, type: 2}
-  - {fileID: 11400000, guid: e32ab01bf11ff5742b92df541bf42041, type: 2}
   - {fileID: 11400000, guid: 4ad6bb124595ead46b799bd5fa868c08, type: 2}
   letter: {fileID: 211580864}
   monitor: {fileID: 693433896}
@@ -1136,6 +1133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Spatialize
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925777797347574729, guid: 2743772aef5374746bf07e7049ded43f,
+        type: 3}
+      propertyPath: MinDistance
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4925777797347574730, guid: 2743772aef5374746bf07e7049ded43f,
         type: 3}
@@ -54699,6 +54701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Spatialize
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925777797347574729, guid: 2743772aef5374746bf07e7049ded43f,
+        type: 3}
+      propertyPath: MinDistance
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4925777797347574730, guid: 2743772aef5374746bf07e7049ded43f,
         type: 3}
