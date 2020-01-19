@@ -1,12 +1,12 @@
-﻿
-
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class TraceGame : MonoBehaviour
 {
-    
+
     public float generalProficiency = 0;
     public LetterConfiguration[] availableLetters;
     public Letter letter;
@@ -26,7 +26,7 @@ public class TraceGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #region =================Session Region====================
@@ -39,7 +39,7 @@ public class TraceGame : MonoBehaviour
     }
     public void StartSession()
     {
-        StartSession(0); //TODO 
+        StartSession(0); //TODO
     }
 
     #endregion
@@ -87,6 +87,32 @@ public class TraceGame : MonoBehaviour
 
         FindObjectOfType<voice_movement>().StartVoiceCommandListen();
         //SpellCastObject.SetActive(true);
+
+        StartCoroutine(sendSessionData(currentSession));
+    }
+
+    IEnumerator sendSessionData(TraceSession sess)
+    {
+
+        string jsonData = JsonUtility.ToJson(sess);
+
+        string sessionTimestamp = sess.dateTime;
+        string secretAuthKey = "REPLACE_ME";
+        string destUrl = $"https://rh2020-dyslexia-db.firebaseio.com/sessions/{sessionTimestamp}.json?auth={secretAuthKey}";
+
+        using (UnityWebRequest www = UnityWebRequest.Put(destUrl, jsonData))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+        }
     }
 
     public void CastSpell()
@@ -141,11 +167,11 @@ public class TraceGame : MonoBehaviour
                 {
                     hintLevel++;
                 }
-                else if (sizeLevel <2)
+                else if (sizeLevel < 2)
                 {
                     sizeLevel++;
                 }
-                
+
             }
 
             currentAttempt = new Attempt(hintLevel, sizeLevel);
@@ -193,7 +219,7 @@ public class TraceGame : MonoBehaviour
     public void CheckLetter()
     {
         letter.strokesUsed++;
-         if (letter.inBoundsTime < letter.inBoundsThreshold)
+        if (letter.inBoundsTime < letter.inBoundsThreshold)
         {
             StopAttempt(false);
         }
@@ -206,7 +232,7 @@ public class TraceGame : MonoBehaviour
         {
             StopAttempt(false);
         }
-        
+
 
     }
 
@@ -273,6 +299,7 @@ public class TraceGame : MonoBehaviour
 
 #region ==================== classes region =========================
 
+[Serializable]
 public class TraceSession
 {
     public string dateTime;
@@ -281,15 +308,16 @@ public class TraceSession
 
     public TraceSession()
     {
-        dateTime = System.DateTime.Now.ToString();
+        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        dateTime = (System.DateTime.UtcNow - epochStart).TotalSeconds.ToString();
+
         letterRounds = new List<LetterRound>();
     }
-
 }
 
+[Serializable]
 public class LetterRound
 {
-    [SerializeField]
     public char letter;
 
     public int highScore;
@@ -303,9 +331,10 @@ public class LetterRound
         attempts = new List<Attempt>();
     }
 
-    //TODO: add images?  
+    //TODO: add images?
 }
 
+[Serializable]
 public class Attempt
 {
     public int sizeLevel = 2;
