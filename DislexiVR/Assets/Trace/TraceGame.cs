@@ -66,7 +66,7 @@ public class TraceGame : MonoBehaviour
         currentSession.letterRounds.Add(currentRound);
 
         System.Random random = new System.Random();
-        int letterIndex = Random.Range(0, availableLetters.Length - 1);
+        int letterIndex = UnityEngine.Random.Range(0, availableLetters.Length - 1);
 
 
         letter.CleanUpBulbs();
@@ -104,9 +104,9 @@ public class TraceGame : MonoBehaviour
     {
 
         string jsonData = JsonUtility.ToJson(sess);
-
+        Debug.Log(jsonData);
         string sessionTimestamp = sess.dateTime;
-        string secretAuthKey = "REPLACE_ME";
+        string secretAuthKey = "PJX1mOVOPUuwPv7qIyPS0J4jSEsJF4hok0gpBi0b";
         string destUrl = $"https://rh2020-dyslexia-db.firebaseio.com/sessions/{sessionTimestamp}.json?auth={secretAuthKey}";
 
         using (UnityWebRequest www = UnityWebRequest.Put(destUrl, jsonData))
