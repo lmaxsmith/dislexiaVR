@@ -57,6 +57,7 @@ public class Wand : MonoBehaviour
     //Main point of entry into Logan's pieces. Call this from control connectors. 
     public void StartCasting()
     {
+        letter = FindObjectOfType<Letter>();
         isCasting = true;
         if (StartCastingEvent != null)
         {

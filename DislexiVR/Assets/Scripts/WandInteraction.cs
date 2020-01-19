@@ -77,7 +77,11 @@ public class WandInteraction : MonoBehaviour
             {
                 GameObject magic = Instantiate(particleMagic, spawnPoint.transform.position, Quaternion.identity);
                 magic.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                currLine.SetVertexCount(numClicks + 1);
+                if (currLine == null)
+                {
+                    return;
+                }
+                currLine.positionCount = numClicks + 1;
                 currLine.SetPosition(numClicks, spawnPoint.transform.position);
                 numClicks++;
             }
