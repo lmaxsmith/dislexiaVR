@@ -10,10 +10,18 @@ public class bookMenu : MonoBehaviour
     Renderer tempColor;
     public GameObject newPlayerPosition;
     public GameObject player;
+    public GameManager gameManager;
+    public GameObject wand;
     public bool startGame = false;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        StartGame();
+    }
     void StartGame()
     {
         tempColor = fader.GetComponent<Renderer>();
+        gameManager.GameStarted = true;
         StartCoroutine(Fade());
         
     }

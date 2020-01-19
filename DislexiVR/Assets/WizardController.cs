@@ -9,12 +9,13 @@ public class WizardController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip wizardTalkingClip;
     public AudioClip staffPoundClip;
+    public AudioClip tutorialClip;
     bool playedAnim = false;
     bool wizardTalking = false;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("WizardTalkingIntro", 1f);
+        Invoke("WizardTalkingIntro", 2f);
     }
 
     // Update is called once per frame
@@ -57,6 +58,14 @@ public class WizardController : MonoBehaviour
     void PlayPoundAudio()
     {
         audioSource.clip = staffPoundClip;
+        audioSource.Play();
+    }
+    public void PlayTutorialClip()
+    {
+        //wizardTalking = true;
+        playedAnim = false;
+        anim.SetBool("Talking", true);
+        audioSource.clip = tutorialClip;
         audioSource.Play();
     }
 }

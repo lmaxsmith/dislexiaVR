@@ -69,7 +69,7 @@ namespace Valve.VR.InteractionSystem
                     && player.rightHand.currentAttachedTeleportManager != null
                     && player.rightHand.currentAttachedTeleportManager.teleportAllowed);
 
-                bool leftHandValid = player.leftHand.currentAttachedObject == null ||
+               /* bool leftHandValid = player.leftHand.currentAttachedObject == null ||
                     (player.leftHand.currentAttachedObject != null
                     && player.leftHand.currentAttachedTeleportManager != null
                     && player.leftHand.currentAttachedTeleportManager.teleportAllowed);
@@ -88,7 +88,7 @@ namespace Valve.VR.InteractionSystem
                 else if (leftHandTurnRight || rightHandTurnRight)
                 {
                     RotatePlayer(snapAngle);
-                }
+                } */
             }
         }
 
