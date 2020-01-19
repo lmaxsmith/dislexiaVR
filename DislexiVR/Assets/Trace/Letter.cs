@@ -18,6 +18,7 @@ public class Letter : MonoBehaviour
     [Tooltip("InBoundsTime that allows pass.")]
     public float inBoundsThreshold = .75f;
 
+    public GameObject summonedObject;
 
     public TextMeshProUGUI letterTextMesh;
     public TextMeshProUGUI wordTextMesh;

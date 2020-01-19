@@ -12,6 +12,9 @@ public class TraceGame : MonoBehaviour
     public Letter letter;
     public UnityEngine.UI.Text monitor;
 
+    public GameObject SpellCastObject;
+    GameObject summonedObject;
+
     TraceSession currentSession;
 
     // Start is called before the first frame update
@@ -49,6 +52,11 @@ public class TraceGame : MonoBehaviour
 
     public void StartRound()
     {
+        if (summonedObject)
+        {
+            Destroy(summonedObject);
+        }
+
         currentRound = new LetterRound();
         currentSession.letterRounds.Add(currentRound);
 
@@ -64,24 +72,27 @@ public class TraceGame : MonoBehaviour
 
     }
 
-    IEnumerator RoundCoroutine()
+    IEnumerator RoundCoroutine()//do i even need this?
     {
         while (true)
         {
-
-
-
-
-
-
 
             yield return new WaitForEndOfFrame();
         }
     }
 
-    public void CastSpell()
+    public void CastSpellAttempt()
     {
         Debug.Log("Expelliarmus!");
+
+        SpellCastObject.SetActive(true);
+    }
+
+    public void CastSpell()
+    {
+        summonedObject = Instantiate(letter.summonedObject);
+        summonedObject.transform.parent = SpellCastObject.transform;
+        summonedObject.transform.localPosition = Vector3.zero;
     }
 
     #endregion
@@ -225,7 +236,7 @@ public class TraceGame : MonoBehaviour
             currentAttempt.passed = true;
             if (currentAttempt.sizeLevel == 0 && currentAttempt.hintLevel == 0)
             {
-                CastSpell();
+                CastSpellAttempt();
                 return;
             }
 
