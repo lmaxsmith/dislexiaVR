@@ -68,6 +68,8 @@ public class TraceGame : MonoBehaviour
         letter.ResetLetter();
         letter.LoadConfiguration(availableLetters[letterIndex]);
 
+        currentRound.letter = letter.letterConfiguration.letter[0];
+
         StartAttempt(true);
 
     }
@@ -259,6 +261,8 @@ public class TraceGame : MonoBehaviour
         FindObjectOfType<Wand>().StopCastingEvent.RemoveListener(CheckLetter);
 
         // decide result and next steps
+        currentAttempt.score = (float)letter.ignitedBulbs / (float)letter.letterBulbs.Length;
+
         if (passed)
         {
             Debug.Log("Passed!");
