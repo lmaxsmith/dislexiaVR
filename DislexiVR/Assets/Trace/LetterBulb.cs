@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LetterBulb : MonoBehaviour
 {
-     Wand wand;
+    public  Wand wand;
     Letter letter;
     Coroutine wandNearCoroutine;
 
@@ -27,7 +27,7 @@ public class LetterBulb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TryDebugColor();
+        TryChangeColor();
 
 
     }
@@ -41,7 +41,7 @@ public class LetterBulb : MonoBehaviour
     {
         isFuckingLit = false;
         bestDistance = 1;
-        TryDebugColor();
+        TryChangeColor();
     }
 
     public void OnWandEnter()
@@ -58,7 +58,7 @@ public class LetterBulb : MonoBehaviour
 
         currentDistance = 1;
 
-        TryDebugColor();
+        TryChangeColor();
 
         StopAllCoroutines();
     }
@@ -84,7 +84,7 @@ public class LetterBulb : MonoBehaviour
 
 
             //color by distance
-            TryDebugColor();
+            TryChangeColor();
 
             yield return new WaitForEndOfFrame();
         }
@@ -95,19 +95,17 @@ public class LetterBulb : MonoBehaviour
         isFuckingLit = true;
         letter.ignitedBulbs++;
 
-        if (wand.debugMode)
-        {
             gameObject.GetComponent<MeshRenderer>().material.color = Color.yellow;
-        }
     }
 
 
 
     #region ===================== debug and testing ==================================
-    void TryDebugColor()
+    void TryChangeColor()
     {
+        
         //color by distance
-        if (wand.debugMode && !isFuckingLit)
+        if (!isFuckingLit)
         {
             gameObject.GetComponent<MeshRenderer>().material.color = new Color(1 - currentDistance, 0, 0, 1 - currentDistance);
         }

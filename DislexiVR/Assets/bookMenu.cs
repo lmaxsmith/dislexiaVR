@@ -20,7 +20,9 @@ public class bookMenu : MonoBehaviour
     {
         StartGame();
     }
-    void StartGame()
+
+    [ContextMenu("Start Game")]
+    public void StartGame()
     {
         tempColor = fader.GetComponent<Renderer>();
         gameManager.GameStarted = true;

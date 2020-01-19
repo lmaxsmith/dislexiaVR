@@ -24,7 +24,7 @@ public class Letter : MonoBehaviour
 
     public int ignitedBulbs;
 
-    Wand wand;
+    public Wand wand;
 
 
     //relationships

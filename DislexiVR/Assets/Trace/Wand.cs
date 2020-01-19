@@ -11,7 +11,7 @@ public class Wand : MonoBehaviour
 
     //collection of trigger colliders at various Distances from the tip of the wand. 
     Collider castingCollider;
-    Letter letter;
+    public Letter letter;
 
     public bool isCasting;
 
@@ -25,7 +25,6 @@ public class Wand : MonoBehaviour
     {
 
         castingCollider = gameObject.GetComponent<Collider>();
-        letter = FindObjectOfType<Letter>();
     }
 
     // Start is called before the first frame update
@@ -48,6 +47,7 @@ public class Wand : MonoBehaviour
             {
                 StopCasting();
             }
+            
             transform.parent.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 2));
         }
 
