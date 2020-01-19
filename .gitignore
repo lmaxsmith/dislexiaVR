@@ -59,5 +59,7 @@ sysinfo.txt
 crashlytics-build.properties
 DislexiVR/Library/
 DislexiVR/Temp/
+DislexiVR/obj/Debug/SteamVR_Actions.csprojAssemblyReference.cache
 DislexiVR/obj/
 DislexiVR/ProjectSettings/
+DislexiVR/Logs/
