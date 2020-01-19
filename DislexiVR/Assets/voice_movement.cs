@@ -18,17 +18,20 @@ public class voice_movement : MonoBehaviour
 
     public AudioSource _source;
 
+    bool answered;
+
     void Start()
     {
         actions.Add("dog", CorrectAnswer);
         actions.Add("cat", CorrectAnswer);
 
-        //temporary for test
-        StartVoiceCommandListen();
     }
 
+    [ContextMenu("Start Listening")]
     public void StartVoiceCommandListen()
     {
+        answered = false;
+
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
         keywordRecognizer.Start();
@@ -40,8 +43,11 @@ public class voice_movement : MonoBehaviour
 
     IEnumerator FinishedRecognition()
     {
-        yield return new WaitForSeconds(5);
-        _source.PlayOneShot(stop);
+        while (!answered)
+        {
+            yield return new WaitForSeconds(10);
+            _source.PlayOneShot(stop);
+        }
         keywordRecognizer.Stop();
     }
 
@@ -52,6 +58,7 @@ public class voice_movement : MonoBehaviour
 
     private void CorrectAnswer()
     {
+        answered = true;
         UnityEngine.Debug.Log("Hit");
         _source.PlayOneShot(correct);
         StopCoroutine(coroutine);

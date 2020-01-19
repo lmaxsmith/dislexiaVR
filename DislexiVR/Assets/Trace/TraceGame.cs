@@ -85,7 +85,8 @@ public class TraceGame : MonoBehaviour
     {
         Debug.Log("Expelliarmus!");
 
-        SpellCastObject.SetActive(true);
+        FindObjectOfType<voice_movement>().StartVoiceCommandListen();
+        //SpellCastObject.SetActive(true);
     }
 
     public void CastSpell()
