@@ -14,6 +14,8 @@ public class bookMenu : MonoBehaviour
     public GameObject wand;
     public bool startGame = false;
 
+    public GameObject traceGame;
+
     private void OnCollisionEnter(Collision collision)
     {
         StartGame();
@@ -23,7 +25,7 @@ public class bookMenu : MonoBehaviour
         tempColor = fader.GetComponent<Renderer>();
         gameManager.GameStarted = true;
         StartCoroutine(Fade());
-        
+        traceGame.SetActive(true);
     }
     private void Update()
     {
