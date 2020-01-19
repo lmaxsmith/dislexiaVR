@@ -1,12 +1,12 @@
-﻿
-
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class TraceGame : MonoBehaviour
 {
-    
+
     public float generalProficiency = 0;
     public LetterConfiguration[] availableLetters;
     public Letter letter;
@@ -22,14 +22,14 @@ public class TraceGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         //StartSession();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     #region =================Session Region====================
@@ -42,7 +42,7 @@ public class TraceGame : MonoBehaviour
     }
     public void StartSession()
     {
-        StartSession(0); //TODO 
+        StartSession(0); //TODO
     }
 
     #endregion
@@ -66,12 +66,14 @@ public class TraceGame : MonoBehaviour
         currentSession.letterRounds.Add(currentRound);
 
         System.Random random = new System.Random();
-        int letterIndex = Random.Range(0, availableLetters.Length - 1);
+        int letterIndex = UnityEngine.Random.Range(0, availableLetters.Length - 1);
 
 
         letter.CleanUpBulbs();
         letter.ResetLetter();
         letter.LoadConfiguration(availableLetters[letterIndex]);
+
+        currentRound.letter = letter.letterConfiguration.letter.Substring(0, 1);
 
         StartAttempt(true);
 
@@ -92,6 +94,34 @@ public class TraceGame : MonoBehaviour
         wizardManager.playAudioClip(7);
         FindObjectOfType<voice_movement>().StartVoiceCommandListen();
         //SpellCastObject.SetActive(true);
+
+        currentSession.markEndTime();
+
+        StartCoroutine(sendSessionData(currentSession));
+    }
+
+    IEnumerator sendSessionData(TraceSession sess)
+    {
+
+        string jsonData = JsonUtility.ToJson(sess);
+        Debug.Log(jsonData);
+        string sessionTimestamp = sess.dateTime;
+        string secretAuthKey = "PJX1mOVOPUuwPv7qIyPS0J4jSEsJF4hok0gpBi0b";
+        string destUrl = $"https://rh2020-dyslexia-db.firebaseio.com/sessions/{sessionTimestamp}.json?auth={secretAuthKey}";
+
+        using (UnityWebRequest www = UnityWebRequest.Put(destUrl, jsonData))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+        }
     }
 
     public void CastSpell()
@@ -151,7 +181,7 @@ public class TraceGame : MonoBehaviour
                     wizardManager.playAudioClip(4);
                     hintLevel++;
                 }
-                else if (sizeLevel <2)
+                else if (sizeLevel < 2)
                 {
                     wizardManager.playAudioClip(5);
                     sizeLevel++;
@@ -160,7 +190,7 @@ public class TraceGame : MonoBehaviour
                 {
                     wizardManager.playAudioClip(1);
                 }
-                
+
             }
 
             currentAttempt = new Attempt(hintLevel, sizeLevel);
@@ -208,7 +238,7 @@ public class TraceGame : MonoBehaviour
     public void CheckLetter()
     {
         letter.strokesUsed++;
-         if (letter.inBoundsTime < letter.inBoundsThreshold)
+        if (letter.inBoundsTime < letter.inBoundsThreshold)
         {
             StopAttempt(false);
         }
@@ -221,7 +251,7 @@ public class TraceGame : MonoBehaviour
         {
             StopAttempt(false);
         }
-        
+
 
     }
 
@@ -246,6 +276,8 @@ public class TraceGame : MonoBehaviour
         FindObjectOfType<Wand>().StopCastingEvent.RemoveListener(CheckLetter);
 
         // decide result and next steps
+        currentAttempt.score = (float)letter.ignitedBulbs / (float)letter.letterBulbs.Length;
+
         if (passed)
         {
             Debug.Log("Passed!");
@@ -288,24 +320,33 @@ public class TraceGame : MonoBehaviour
 
 #region ==================== classes region =========================
 
+[Serializable]
 public class TraceSession
 {
     public string dateTime;
+    public string endDateTime;
     public List<LetterRound> letterRounds;
     public int proficiency;
 
     public TraceSession()
     {
-        dateTime = System.DateTime.Now.ToString();
+        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        dateTime = Math.Round((System.DateTime.UtcNow - epochStart).TotalSeconds).ToString();
+
         letterRounds = new List<LetterRound>();
     }
 
+    public void markEndTime()
+    {
+        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+        endDateTime = Math.Round((System.DateTime.UtcNow - epochStart).TotalSeconds).ToString();
+    }
 }
 
+[Serializable]
 public class LetterRound
 {
-    [SerializeField]
-    public char letter;
+    public string letter;
 
     public int highScore;
     public int lowScore;
@@ -318,9 +359,10 @@ public class LetterRound
         attempts = new List<Attempt>();
     }
 
-    //TODO: add images?  
+    //TODO: add images?
 }
 
+[Serializable]
 public class Attempt
 {
     public int sizeLevel = 2;
