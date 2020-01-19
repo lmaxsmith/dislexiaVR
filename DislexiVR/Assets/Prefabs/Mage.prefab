@@ -720,6 +720,8 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   wizardTalkingClip: {fileID: 0}
   staffPoundClip: {fileID: 0}
+  tutorialClip: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!82 &4925777797347574729
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1484,7 +1486,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8167192723405115674}
   m_LocalRotation: {x: 0.98349106, y: -0.018792264, z: 0.042725798, w: 0.17483316}
-  m_LocalPosition: {x: 0.0002009855, y: 0.52199703, z: 0.39669833}
+  m_LocalPosition: {x: -0.003, y: 0.461, z: 0.418}
   m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
   m_Children: []
   m_Father: {fileID: 8214769232567497177}

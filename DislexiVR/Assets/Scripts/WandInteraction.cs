@@ -70,8 +70,8 @@ public class WandInteraction : MonoBehaviour
             {
                 wand.StopCasting();
 
-                audioSource.clip = releaseClip;
-                audioSource.Play();
+                //audioSource.clip = releaseClip;
+                //audioSource.Play();
             } 
             else if (castMagic.GetState(SteamVR_Input_Sources.RightHand))
             {
