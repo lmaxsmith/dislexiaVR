@@ -6,6 +6,7 @@ using UnityEngine;
 public class LetterBulb : MonoBehaviour
 {
     Wand wand;
+    Letter letter;
     Coroutine wandNearCoroutine;
 
     public bool isNear;
@@ -20,6 +21,7 @@ public class LetterBulb : MonoBehaviour
     private void Awake()
     {
         wand = FindObjectOfType<Wand>();
+        letter = FindObjectOfType<Letter>();
     }
 
     // Start is called before the first frame update
@@ -33,6 +35,13 @@ public class LetterBulb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void ResetBulb()
+    {
+        isFuckingLit = false;
+        bestDistance = 1;
+        TryDebugColor();
     }
 
     public void OnWandEnter()
@@ -85,6 +94,7 @@ public class LetterBulb : MonoBehaviour
     public void OnLight()
     {
         isFuckingLit = true;
+        letter.ignitedBulbs++;
 
         if (wand.debugMode)
         {

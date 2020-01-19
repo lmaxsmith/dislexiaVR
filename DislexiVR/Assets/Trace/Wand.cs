@@ -8,8 +8,10 @@ public class Wand : MonoBehaviour
     [Tooltip("The diameter of the larges collision sphere (in meters)")]
     public float roughPrecisionScale = .5f;
 
+
     //collection of trigger colliders at various Distances from the tip of the wand. 
     Collider castingCollider;
+    Letter letter;
 
     public bool isCasting;
 
@@ -22,6 +24,7 @@ public class Wand : MonoBehaviour
     private void Awake()
     {
         castingCollider = gameObject.GetComponent<Collider>();
+        letter = FindObjectOfType<Letter>();
     }
 
     // Start is called before the first frame update
@@ -58,6 +61,7 @@ public class Wand : MonoBehaviour
         {
             StartCastingEvent.Invoke();
         }
+        StartCoroutine(letter.CastLoggingCoroutine());
     }
     public void StopCasting()
     {
@@ -67,6 +71,7 @@ public class Wand : MonoBehaviour
             StopCastingEvent.Invoke();
         }
     }
+
 
     private void OnTriggerEnter(Collider other)
     {

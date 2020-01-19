@@ -13,16 +13,25 @@ public class Letter : MonoBehaviour
     public GameObject letterBulbPrefab;
     public LetterConfiguration letterConfiguration;
 
+    [Tooltip("Portion of casting time within the letter boundaries.")]
+    public float inBoundsTime = 1;
+    [Tooltip("InBoundsTime that allows pass.")]
+    public float inBoundsThreshold = .75f;
+
 
     public TextMeshProUGUI letterTextMesh;
     public TextMeshProUGUI wordTextMesh;
-    
+
+    public int ignitedBulbs;
+
+    Wand wand;
 
 
     //relationships
     private void Awake()
     {
         letterBulbs = GetComponentsInChildren<LetterBulb>(true);
+        wand = FindObjectOfType<Wand>();
     }
 
     // Start is called before the first frame update
@@ -33,8 +42,42 @@ public class Letter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
+
+    public void ResetLetter()
+    {
+        letterBulbs = GetComponentsInChildren<LetterBulb>();
+        foreach (var bulb in letterBulbs)
+        {
+            bulb.ResetBulb();
+        }
+        strokesUsed = 0;
+        ignitedBulbs = 0;
+    }
+
+    public IEnumerator CastLoggingCoroutine()
+    {
+        int passingMoments = 0;
+        int totalMoments = 0;
+
+        while (wand.isCasting)
+        {
+            foreach (var bulb in letterBulbs)
+            {
+                if (bulb.currentDistance < .5)
+                {
+                    passingMoments++;
+                    break;
+                }
+            }
+            totalMoments++;
+
+            yield return new WaitForEndOfFrame();
+        }
+        inBoundsTime = passingMoments / totalMoments;
+        yield break;
+    }
+
 
     [ContextMenu("Save Letter Configuration")]
     public void SaveConfiguration()
@@ -61,12 +104,6 @@ public class Letter : MonoBehaviour
     {
         this.letterConfiguration = letterConfiguration;
 
-        letterBulbs = GetComponentsInChildren<LetterBulb>();
-        foreach (var bulb in letterBulbs)
-        {
-            DestroyImmediate(bulb.gameObject);
-        }
-        letterBulbs = new LetterBulb[0];
         //setup bulbs
         foreach (var bulbPosition in letterConfiguration.bulbPositions)
         {
