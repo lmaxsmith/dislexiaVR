@@ -296,7 +296,8 @@ MonoBehaviour:
     type: 2}
   inBoundsTime: 1
   inBoundsThreshold: 0.75
-  summonedObject: {fileID: 0}
+  summonedObject: {fileID: 5493510260481720653, guid: c7151aeacf0c9d64784a9db8a37a1bd1,
+    type: 3}
   letterTextMesh: {fileID: 1593718280}
   wordTextMesh: {fileID: 2100249567}
   ignitedBulbs: 0
@@ -817,10 +818,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b82070fd4d79ea048a72df8d69e48b7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
+  start: {fileID: 8300000, guid: 8602149c1cd19c84f8e6b3aa040e5ba0, type: 3}
   stop: {fileID: 8300000, guid: 4060c435210a1e24fa8b51d41217df5c, type: 3}
   correct: {fileID: 8300000, guid: 732c5996cdad30f46b1d150fc9fbfeef, type: 3}
-  _source: {fileID: 0}
+  _source: {fileID: 737219935}
 --- !u!65 &631258321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1133,6 +1134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Spatialize
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4925777797347574729, guid: 2743772aef5374746bf07e7049ded43f,
+        type: 3}
+      propertyPath: MinDistance
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4925777797347574730, guid: 2743772aef5374746bf07e7049ded43f,
         type: 3}
@@ -54597,7 +54603,7 @@ PrefabInstance:
     - target: {fileID: 4925777797347574729, guid: 2743772aef5374746bf07e7049ded43f,
         type: 3}
       propertyPath: MinDistance
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4925777797347574730, guid: 2743772aef5374746bf07e7049ded43f,
         type: 3}

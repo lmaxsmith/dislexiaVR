@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public void transitionScene()
     {
+        FindObjectOfType<TraceGame>().StartSession();
+
         tempColor = fader.GetComponent<Renderer>();
         GameStarted = true;
         StartCoroutine(FadeOut());
