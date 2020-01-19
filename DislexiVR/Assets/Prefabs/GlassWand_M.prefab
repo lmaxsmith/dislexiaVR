@@ -133,9 +133,9 @@ MonoBehaviour:
   audioSource: {fileID: 7117034078083457097}
   pressClip: {fileID: 8300000, guid: 93ef87b410896be428158b2a83b952c6, type: 3}
   releaseClip: {fileID: 8300000, guid: d2f8687a99c304c4bbf544920e77b48f, type: 3}
+  magicBlast: {fileID: 8300000, guid: 2dc8036e8dd87c2488771d72aa7186a1, type: 3}
   spawnPoint: {fileID: 2517956547855272156}
   lineMat: {fileID: 2100000, guid: bde49212dc4365c47a2d964aa51f512d, type: 2}
-  GameStarted: 0
   castMagic:
     actionPath: /actions/default/in/InteractUI
     needsReinit: 0

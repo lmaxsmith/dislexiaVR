@@ -12,6 +12,7 @@ public class WandInteraction : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pressClip;
     public AudioClip releaseClip;
+    public AudioClip magicBlast;
 
     public GameObject spawnPoint;
     public Material lineMat;
@@ -28,6 +29,8 @@ public class WandInteraction : MonoBehaviour
     private Interactable interactable;
     public SteamVR_Action_Boolean castMagic;
     private GameManager gameManager;
+    
+
 
     private LineRenderer currLine;
     private int numClicks = 0;
@@ -76,9 +79,12 @@ public class WandInteraction : MonoBehaviour
         {
             if (castMagic.GetStateDown(SteamVR_Input_Sources.Any))
             {
+                audioSource.clip = magicBlast;
+                audioSource.Play();
                 GameObject magic = Instantiate(particleBlast, spawnPoint.transform.position, Quaternion.identity);
                 magic.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 magic.GetComponent<Rigidbody>().AddForce(transform.up * 350);
+                
             }
 
         } 
