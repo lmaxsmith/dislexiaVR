@@ -316,7 +316,7 @@ public class TraceSession
     public TraceSession()
     {
         System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        dateTime = (System.DateTime.UtcNow - epochStart).TotalSeconds.ToString();
+        dateTime = Math.Round((System.DateTime.UtcNow - epochStart).TotalSeconds).ToString();
 
         letterRounds = new List<LetterRound>();
     }
@@ -324,8 +324,7 @@ public class TraceSession
     public void markEndTime()
     {
         System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        endDateTime = (System.DateTime.UtcNow - epochStart).TotalSeconds.ToString();
-
+        endDateTime = Math.Round((System.DateTime.UtcNow - epochStart).TotalSeconds).ToString();
     }
 }
 
