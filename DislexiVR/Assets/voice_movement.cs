@@ -24,6 +24,7 @@ public class voice_movement : MonoBehaviour
     {
         actions.Add("dog", CorrectAnswer);
         actions.Add("cat", CorrectAnswer);
+        actions.Add("bat", CorrectAnswer);
 
     }
 

@@ -117,6 +117,7 @@ public class Letter : MonoBehaviour
     {
         this.letterConfiguration = letterConfiguration;
 
+
         //setup bulbs
         foreach (var bulbPosition in letterConfiguration.bulbPositions)
         {
@@ -129,6 +130,8 @@ public class Letter : MonoBehaviour
         strokesAllowed = letterConfiguration.strokes;
         letterTextMesh.text = letterConfiguration.letter;
         wordTextMesh.text = letterConfiguration.wordRemainder;
+
+        summonedObject = letterConfiguration.summonPrefab;
 
     }
 

@@ -11,5 +11,6 @@ public class LetterConfiguration : ScriptableObject
     public int strokes = 1;
 
     public Vector3[] bulbPositions;
+    public GameObject summonPrefab;
 
 }
