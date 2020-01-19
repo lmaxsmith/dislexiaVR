@@ -11,7 +11,7 @@ public class Wand : MonoBehaviour
 
     //collection of trigger colliders at various Distances from the tip of the wand. 
     Collider castingCollider;
-    Letter letter;
+    public Letter letter;
 
     public bool isCasting;
 
@@ -25,7 +25,6 @@ public class Wand : MonoBehaviour
     {
 
         castingCollider = gameObject.GetComponent<Collider>();
-        letter = FindObjectOfType<Letter>();
     }
 
     // Start is called before the first frame update
@@ -57,6 +56,7 @@ public class Wand : MonoBehaviour
     //Main point of entry into Logan's pieces. Call this from control connectors. 
     public void StartCasting()
     {
+        letter = FindObjectOfType<Letter>();
         isCasting = true;
         if (StartCastingEvent != null)
         {
