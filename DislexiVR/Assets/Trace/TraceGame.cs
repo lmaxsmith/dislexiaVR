@@ -12,6 +12,8 @@ public class TraceGame : MonoBehaviour
     public Letter letter;
     public UnityEngine.UI.Text monitor;
 
+    public wizardInGameManager wizardManager;
+
     public GameObject SpellCastObject;
     GameObject summonedObject;
 
@@ -20,7 +22,8 @@ public class TraceGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartSession();
+        
+        //StartSession();
     }
 
     // Update is called once per frame
@@ -57,6 +60,8 @@ public class TraceGame : MonoBehaviour
             Destroy(summonedObject);
         }
 
+        wizardManager.playAudioClip(0);
+
         currentRound = new LetterRound();
         currentSession.letterRounds.Add(currentRound);
 
@@ -84,7 +89,7 @@ public class TraceGame : MonoBehaviour
     public void CastSpellAttempt()
     {
         Debug.Log("Expelliarmus!");
-
+        wizardManager.playAudioClip(7);
         FindObjectOfType<voice_movement>().StartVoiceCommandListen();
         //SpellCastObject.SetActive(true);
     }
@@ -124,14 +129,18 @@ public class TraceGame : MonoBehaviour
             int hintLevel = currentAttempt.hintLevel;
             int sizeLevel = currentAttempt.sizeLevel;
 
+
+
             if (currentAttempt.passed)
             {
                 if (hintLevel <= 0)
                 {
+                    wizardManager.playAudioClip(6);
                     sizeLevel--;
                 }
                 else
                 {
+                    wizardManager.playAudioClip(3);
                     hintLevel--;
                 }
             }
@@ -139,11 +148,17 @@ public class TraceGame : MonoBehaviour
             {
                 if (hintLevel == 0)
                 {
+                    wizardManager.playAudioClip(4);
                     hintLevel++;
                 }
                 else if (sizeLevel <2)
                 {
+                    wizardManager.playAudioClip(5);
                     sizeLevel++;
+                }
+                else
+                {
+                    wizardManager.playAudioClip(1);
                 }
                 
             }
