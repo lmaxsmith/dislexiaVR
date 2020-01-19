@@ -20,5 +20,8 @@ public class bookMenu : MonoBehaviour
     public void StartGame()
     {
         gameManager.transitionScene();
-    }
+
+        FindObjectOfType<TraceGame>().StartSession();
+            
+            }
 }
