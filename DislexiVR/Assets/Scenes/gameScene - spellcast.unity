@@ -323,7 +323,6 @@ MonoBehaviour:
   letter: {fileID: 211580864}
   monitor: {fileID: 693433896}
   SpellCastObject: {fileID: 631258319}
-  castEffectPrefab: {fileID: 0}
 --- !u!1 &253724366
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +807,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &631258320
 MonoBehaviour:
   m_ObjectHideFlags: 0
