@@ -55,8 +55,9 @@ public class TraceGame : MonoBehaviour
         System.Random random = new System.Random();
         int letterIndex = Random.Range(0, availableLetters.Length - 1);
 
-       
 
+        letter.CleanUpBulbs();
+        letter.ResetLetter();
         letter.LoadConfiguration(availableLetters[letterIndex]);
 
         StartAttempt(true);
@@ -99,6 +100,7 @@ public class TraceGame : MonoBehaviour
         if (isFirstAttempt)
         {
             currentAttempt = new Attempt(1, 2);
+
         }
         else //not our first rodeo
         {
@@ -135,11 +137,37 @@ public class TraceGame : MonoBehaviour
         }
         monitor.text = string.Format("Hint Level: {0},  Size Level: {1}", currentAttempt.hintLevel, currentAttempt.sizeLevel);
 
+
         currentRound.attempts.Add(currentAttempt);
 
         //setup letter
         letter.enabled = true;
         letter.ResetLetter();
+        float letterScaleMultiplier = 1f;
+        if (currentAttempt.sizeLevel == 2)
+        {
+            letterScaleMultiplier = 1;
+        }
+        else if (currentAttempt.sizeLevel == 1)
+        {
+            letterScaleMultiplier = .75f;
+        }
+        else
+        {
+            letterScaleMultiplier = .5f;
+        }
+
+        letter.transform.localScale = new Vector3(letterScaleMultiplier, letterScaleMultiplier, letterScaleMultiplier);
+        Debug.Log("scaling letter to " + letterScaleMultiplier);
+        if (currentAttempt.hintLevel == 1)
+        {
+            letter.letterTextMesh.enabled = true;
+        }
+        else
+        {
+            letter.letterTextMesh.enabled = false;
+        }
+
 
         //StartCoroutine(AttemptCoroutine());
         FindObjectOfType<Wand>().StopCastingEvent.AddListener(CheckLetter);

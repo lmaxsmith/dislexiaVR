@@ -67,17 +67,16 @@ public class LetterBulb : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("in WandNear");
 
             //caluculate distances
-            currentDistance = Vector3.Distance(transform.position, wand.transform.position) / wand.roughPrecisionScale;
+            currentDistance = Vector3.Distance(transform.position, wand.transform.position) / (wand.roughPrecisionScale * transform.parent.localScale.x);
             if (currentDistance < bestDistance)
             {
                 bestDistance = currentDistance;
             }
 
             //control lighting the bulb
-            if (wand.isCasting && !isFuckingLit && currentDistance < .5f)
+            if (wand.isCasting && !isFuckingLit && currentDistance < .4f)
             {
                 OnLight();
             }

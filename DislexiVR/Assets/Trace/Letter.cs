@@ -37,11 +37,23 @@ public class Letter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CleanUpBulbs();
+        ResetLetter();
     }
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void CleanUpBulbs()
+    {
+        letterBulbs = GetComponentsInChildren<LetterBulb>();
+
+        for (int i = 0; i < letterBulbs.Length; i++)
+        {
+            DestroyImmediate(letterBulbs[i].gameObject);
+        }
+        letterBulbs = GetComponentsInChildren<LetterBulb>();
     }
 
     public void ResetLetter()
