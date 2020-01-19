@@ -95,7 +95,12 @@ public class TraceGame : MonoBehaviour
 
     public void StartAttempt(bool isFirstAttempt)
     {
-        
+        //cleanup line renderers
+        LineRenderer[] lines = FindObjectsOfType<LineRenderer>();
+        for (int i = 0; i < lines.Length; i++)
+        {
+            DestroyImmediate(lines[i].gameObject);
+        }
 
         if (isFirstAttempt)
         {
