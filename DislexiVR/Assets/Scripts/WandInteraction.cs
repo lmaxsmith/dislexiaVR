@@ -36,6 +36,7 @@ public class WandInteraction : MonoBehaviour
     private UnityEngine.XR.InputDevice controller;
     private bool controllerWasDown;
     private bool controllerIsDown;
+    private bool AButtonPressed;
 
     void Start()
     {
@@ -45,7 +46,7 @@ public class WandInteraction : MonoBehaviour
 
         AssignControllers();
 
-        Debug.Log("A START LOG");
+        Logger.IngameDebug($"Starting wand interactions: {GetInstanceID()}");
     }
 
     private void AssignControllers()
@@ -68,6 +69,7 @@ public class WandInteraction : MonoBehaviour
     {
         controllerWasDown = controllerIsDown;
         controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out controllerIsDown);
+        controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out AButtonPressed);
     }
 
     private bool PrimaryButtonIsPressed()
@@ -165,11 +167,18 @@ public class WandInteraction : MonoBehaviour
 
     void QuestUpdate()
     {
+        if (AButtonPressed)
+        {
+            Logger.Clear();
+        }
+
         if (gameManager.GameStarted)
         {
             Wand wand = FindObjectOfType<Wand>();
             if (PrimaryButtonIsPressed())//castMagic.GetStateDown(SteamVR_Input_Sources.RightHand))
             {
+                Logger.IngameDebug("Tracing a new line");
+
                 GameObject go = new GameObject();
                 currLine = go.AddComponent<LineRenderer>();
                 go.tag = "CastingTracer";

@@ -19,17 +19,42 @@ public class TraceGame : MonoBehaviour
 
     TraceSession currentSession;
 
+    private UnityEngine.XR.InputDevice controller;
+
     // Start is called before the first frame update
     void Start()
     {
+        AssignControllers();
+    }
 
-        //StartSession();
+    private void AssignControllers()
+    {
+        var devices = new List<UnityEngine.XR.InputDevice>();
+        UnityEngine.XR.InputDevices.GetDevicesAtXRNode(UnityEngine.XR.XRNode.RightHand, devices);
+
+        if (devices.Count == 1)
+        {
+            controller = devices[0];
+            Debug.Log(string.Format("Device name '{0}' with role '{1}'", controller.name, controller.role.ToString()));
+        }
+        else if (devices.Count > 1)
+        {
+            Debug.Log("Found more than one left hand!");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        letter.transform.Translate(Vector3.forward * ControllerOffset().y * Time.deltaTime);
+    }
 
+    Vector2 ControllerOffset()
+    {
+        Vector2 axis;
+        controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxis, out axis);
+
+        return axis;
     }
 
     #region =================Session Region====================
@@ -148,6 +173,7 @@ public class TraceGame : MonoBehaviour
         Logger.IngameDebug($"Number of lines: {castingLines.Length}");
         foreach (GameObject castingLine in castingLines)
         {
+            Logger.IngameDebug($"Destroying a line");
             Destroy(castingLine);
         }
 
@@ -240,8 +266,12 @@ public class TraceGame : MonoBehaviour
     public void CheckLetter()
     {
         letter.strokesUsed++;
+
+        Logger.IngameDebug($"Bulbs: {letter.ignitedBulbs} of {letter.letterBulbs.Length}");
+
         if (letter.inBoundsTime < letter.inBoundsThreshold)
         {
+            Logger.IngameDebug($"Fail: too little time in bounds ({letter.inBoundsTime} of {letter.inBoundsThreshold})");
             StopAttempt(false);
         }
         else if (letter.ignitedBulbs >= letter.letterBulbs.Length)
@@ -249,8 +279,9 @@ public class TraceGame : MonoBehaviour
             StopAttempt(true);
             //break;
         }
-        else if (letter.strokesUsed >= letter.strokesAllowed)
+        else if (letter.strokesUsed > letter.strokesAllowed)
         {
+            Logger.IngameDebug($"Fail: too many strokes ({letter.strokesUsed} of {letter.strokesAllowed})");
             StopAttempt(false);
         }
 

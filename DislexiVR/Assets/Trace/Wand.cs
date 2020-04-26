@@ -80,7 +80,7 @@ public class Wand : MonoBehaviour
         LetterBulb letterBulb;
         if (letterBulb = other.gameObject.GetComponent<LetterBulb>())
         {
-            Debug.Log("letterbulb collision detected.");
+            // Debug.Log("letterbulb collision detected.");
 
             letterBulb.OnWandEnter();
         }
@@ -91,7 +91,7 @@ public class Wand : MonoBehaviour
         LetterBulb letterBulb;
         if (letterBulb = other.gameObject.GetComponent<LetterBulb>())
         {
-            Debug.Log("letterbulb collision exit.");
+            // Debug.Log("letterbulb collision exit.");
             letterBulb.OnWandExit();
 
         }

@@ -70,8 +70,8 @@ public class Letter : MonoBehaviour
 
     public IEnumerator CastLoggingCoroutine()
     {
-        int passingMoments = 0;
-        int totalMoments = 0;
+        float passingMoments = 0;
+        float totalMoments = 0;
 
         while (wand.isCasting)
         {
@@ -87,7 +87,9 @@ public class Letter : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+        Logger.IngameDebug($"p/t: {passingMoments}/{totalMoments}");
         inBoundsTime = passingMoments / totalMoments;
+        Logger.IngameDebug($"ibt: {inBoundsTime}");
         yield break;
     }
 
