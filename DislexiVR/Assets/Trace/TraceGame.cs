@@ -143,10 +143,12 @@ public class TraceGame : MonoBehaviour
     public void StartAttempt(bool isFirstAttempt)
     {
         //cleanup line renderers
-        LineRenderer[] lines = FindObjectsOfType<LineRenderer>();
-        for (int i = 0; i < lines.Length; i++)
+        GameObject[] castingLines = GameObject.FindGameObjectsWithTag("CastingTracer");
+
+        Logger.IngameDebug($"Number of lines: {castingLines.Length}");
+        foreach (GameObject castingLine in castingLines)
         {
-            DestroyImmediate(lines[i].gameObject);
+            Destroy(castingLine);
         }
 
         if (isFirstAttempt)
@@ -287,8 +289,6 @@ public class TraceGame : MonoBehaviour
                 CastSpellAttempt();
                 return;
             }
-
-
         }
         else
         {

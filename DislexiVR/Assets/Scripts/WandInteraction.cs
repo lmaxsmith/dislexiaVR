@@ -19,8 +19,11 @@ public class WandInteraction : MonoBehaviour
     public GameObject spawnPoint;
     public Material lineMat;
 
-    private Interactable interactable;
+    [Header("Steam Only")]
     public SteamVR_Action_Boolean castMagic;
+
+    private Interactable interactable;
+
     private GameManager gameManager;
 
     private LineRenderer currLine;
@@ -74,7 +77,12 @@ public class WandInteraction : MonoBehaviour
 
     private bool PrimaryButtonIsHeld()
     {
-        return controllerIsDown;
+        return controllerIsDown && controllerWasDown;
+    }
+
+    private bool PrimaryButtonIsReleased()
+    {
+        return !controllerIsDown && controllerWasDown;
     }
 
     private Vector3 ControllerForward()
@@ -93,12 +101,6 @@ public class WandInteraction : MonoBehaviour
     {
         UpdateControllerButtonPress();
 
-        // float x = controller.transform.position.x;
-        // float y = controller.transform.position.y;
-        // float z = controller.transform.position.z;
-
-        // Debug.Log($"Controller Transform: {x} {y} {z}");
-
         updateHandler();
     }
 
@@ -110,6 +112,7 @@ public class WandInteraction : MonoBehaviour
             if (castMagic.GetStateDown(SteamVR_Input_Sources.RightHand))
             {
                 GameObject go = new GameObject();
+                go.tag = "CastingTracer";
                 currLine = go.AddComponent<LineRenderer>();
                 currLine.startWidth = 0.05f;
                 currLine.endWidth = 0.05f;
@@ -165,10 +168,11 @@ public class WandInteraction : MonoBehaviour
         if (gameManager.GameStarted)
         {
             Wand wand = FindObjectOfType<Wand>();
-            if (false)//castMagic.GetStateDown(SteamVR_Input_Sources.RightHand))
+            if (PrimaryButtonIsPressed())//castMagic.GetStateDown(SteamVR_Input_Sources.RightHand))
             {
                 GameObject go = new GameObject();
                 currLine = go.AddComponent<LineRenderer>();
+                go.tag = "CastingTracer";
                 currLine.startWidth = 0.05f;
                 currLine.endWidth = 0.05f;
                 currLine.material = lineMat;
@@ -182,24 +186,38 @@ public class WandInteraction : MonoBehaviour
 
                 numClicks = 0;
             }
-            else if (false)//castMagic.GetLastStateUp(SteamVR_Input_Sources.Any))
+            else if (PrimaryButtonIsReleased())//castMagic.GetLastStateUp(SteamVR_Input_Sources.Any))
             {
                 wand.StopCasting();
 
                 //audioSource.clip = releaseClip;
                 //audioSource.Play();
             }
-            else if (false)//castMagic.GetState(SteamVR_Input_Sources.RightHand))
+            else if (PrimaryButtonIsHeld())//castMagic.GetState(SteamVR_Input_Sources.RightHand))
             {
-                GameObject magic = Instantiate(particleMagic, spawnPoint.transform.position, Quaternion.identity);
-                magic.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                // TODO: add something particle-ish back in to show casting happening
+                // GameObject magic = Instantiate(particleMagic, spawnPoint.transform.position, Quaternion.identity);
+                // magic.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+
                 if (currLine == null)
                 {
                     return;
                 }
-                currLine.positionCount = numClicks + 1;
-                currLine.SetPosition(numClicks, spawnPoint.transform.position);
-                numClicks++;
+                if (spawnPoint)
+                {
+                    currLine.positionCount = numClicks + 1;
+                    currLine.SetPosition(numClicks, spawnPoint.transform.position);
+                    numClicks++;
+                }
+                else
+                {
+                    Logger.IngameDebug("LOST SPAWN POINT");
+                    var controllerGO = GameObject.Find("RightHand Controller");
+                    if (controllerGO != null)
+                    {
+                        Logger.IngameDebug("FOUND SPAWN POINT");
+                    }
+                }
             }
         }
         else

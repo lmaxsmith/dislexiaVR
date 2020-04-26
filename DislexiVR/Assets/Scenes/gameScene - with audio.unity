@@ -151,15 +151,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7d5fce880a235489a9f8325b7e2e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleMagic: {fileID: 0}
+  particleMagic: {fileID: 1692517446758730, guid: 08fd1b80cc24cc8439f45fda3c558255,
+    type: 3}
   particleBlast: {fileID: 4938279978400473137, guid: 12a33ebdc6abf8146a8ce2455ef0782b,
     type: 3}
   audioSource: {fileID: 0}
-  pressClip: {fileID: 0}
-  releaseClip: {fileID: 0}
+  pressClip: {fileID: 8300000, guid: 93ef87b410896be428158b2a83b952c6, type: 3}
+  releaseClip: {fileID: 8300000, guid: d2f8687a99c304c4bbf544920e77b48f, type: 3}
   magicBlast: {fileID: 8300000, guid: 2dc8036e8dd87c2488771d72aa7186a1, type: 3}
-  spawnPoint: {fileID: 0}
-  lineMat: {fileID: 0}
+  spawnPoint: {fileID: 300409524}
+  lineMat: {fileID: 2100000, guid: 20e729147a4dad247abfc2305c3dd963, type: 2}
   castMagic:
     actionPath: 
     needsReinit: 0
@@ -950,6 +951,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2648,6 +2650,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10107,6 +10110,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -11316,6 +11320,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

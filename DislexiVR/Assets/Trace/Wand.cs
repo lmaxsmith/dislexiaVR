@@ -9,7 +9,7 @@ public class Wand : MonoBehaviour
     public float roughPrecisionScale = .5f;
 
 
-    //collection of trigger colliders at various Distances from the tip of the wand. 
+    //collection of trigger colliders at various Distances from the tip of the wand.
     Collider castingCollider;
     public Letter letter;
 
@@ -47,14 +47,14 @@ public class Wand : MonoBehaviour
             {
                 StopCasting();
             }
-            
+
             transform.parent.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 2));
         }
 
 
     }
 
-    //Main point of entry into Logan's pieces. Call this from control connectors. 
+    //Main point of entry into Logan's pieces. Call this from control connectors.
     public void StartCasting()
     {
         letter = FindObjectOfType<Letter>();
@@ -81,10 +81,10 @@ public class Wand : MonoBehaviour
         if (letterBulb = other.gameObject.GetComponent<LetterBulb>())
         {
             Debug.Log("letterbulb collision detected.");
-            
+
             letterBulb.OnWandEnter();
         }
-        
+
     }
     private void OnTriggerExit(Collider other)
     {
