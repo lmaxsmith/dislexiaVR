@@ -4,7 +4,12 @@ using System.Collections.Generic;
 using System.Security.AccessControl;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+using SpeechLib = UnityEngine.Windows.Speech;
+#else
+using SpeechLib = Nonwindows.Speech;
+#endif
+
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.IO;
@@ -12,7 +17,7 @@ using System.IO;
 public class voice_movement : MonoBehaviour
 {
     public AudioClip start, stop, correct;
-    private KeywordRecognizer keywordRecognizer;
+    private SpeechLib.KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
     private Coroutine coroutine;
 
@@ -33,7 +38,7 @@ public class voice_movement : MonoBehaviour
     {
         answered = false;
 
-        keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
+        keywordRecognizer = new SpeechLib.KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
         keywordRecognizer.Start();
         _source.clip = start;
@@ -52,7 +57,7 @@ public class voice_movement : MonoBehaviour
         keywordRecognizer.Stop();
     }
 
-    private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
+    private void RecognizedSpeech(SpeechLib.PhraseRecognizedEventArgs speech)
     {
         actions[speech.text].Invoke();
     }
