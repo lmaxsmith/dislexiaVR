@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bookMenu : MonoBehaviour
 {
-    
+
     public GameManager gameManager;
     public GameObject wand;
     public bool startGame = false;
@@ -20,7 +20,5 @@ public class bookMenu : MonoBehaviour
     public void StartGame()
     {
         gameManager.transitionScene();
-
-            
-            }
+    }
 }
