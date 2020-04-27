@@ -36,7 +36,8 @@ public class WandInteraction : MonoBehaviour
     private UnityEngine.XR.InputDevice controller;
     private bool controllerWasDown;
     private bool controllerIsDown;
-    private bool AButtonPressed;
+    private bool AButtonIsDown;
+    private bool AButtonWasDown;
 
     void Start()
     {
@@ -47,6 +48,8 @@ public class WandInteraction : MonoBehaviour
         AssignControllers();
 
         Logger.IngameDebug($"Starting wand interactions: {GetInstanceID()}");
+        Logger.IngameDebug($"Parent: {transform.parent.gameObject.name}");
+        Logger.IngameDebug($"GParent: {transform.parent.parent.gameObject.name}");
     }
 
     private void AssignControllers()
@@ -69,7 +72,9 @@ public class WandInteraction : MonoBehaviour
     {
         controllerWasDown = controllerIsDown;
         controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out controllerIsDown);
-        controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out AButtonPressed);
+
+        AButtonWasDown = AButtonIsDown;
+        controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out AButtonIsDown);
     }
 
     private bool PrimaryButtonIsPressed()
@@ -85,6 +90,11 @@ public class WandInteraction : MonoBehaviour
     private bool PrimaryButtonIsReleased()
     {
         return !controllerIsDown && controllerWasDown;
+    }
+
+    private bool AButtonIsPressed()
+    {
+        return AButtonIsDown && !AButtonWasDown;
     }
 
     private Vector3 ControllerForward()
@@ -167,7 +177,7 @@ public class WandInteraction : MonoBehaviour
 
     void QuestUpdate()
     {
-        if (AButtonPressed)
+        if (AButtonIsPressed())
         {
             Logger.Clear();
         }

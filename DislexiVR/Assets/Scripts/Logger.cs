@@ -7,28 +7,44 @@ using System.Linq;
 public class Logger
 {
     private static List<string> messages;
+    private static TextMeshProUGUI guiText;
 
     static Logger()
     {
         messages = new List<string>();
     }
 
+    private static bool EnsureText()
+    {
+        if (guiText == null)
+        {
+            guiText = GameObject.Find("DebugText")?.GetComponent<TextMeshProUGUI>();
+        }
+
+        if (guiText == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     public static void IngameDebug(string debugMsg)
     {
-        // if (messages.Count > 0 && messages.Last() == debugMsg)
-        // {
-        //     return;
-        // }
-        messages.Add(debugMsg);
+        if (!EnsureText()) return;
 
         Debug.Log($"LOGMSG: {debugMsg}");
-
-        GameObject.Find("DebugText")?.GetComponent<TextMeshProUGUI>()?.SetText(string.Join("\n", messages));
+        messages.Add(debugMsg);
+        guiText.SetText(string.Join("\n", messages));
     }
 
     public static void Clear()
     {
+        if (!EnsureText()) return;
+
+        Debug.Log($"LOGMSG: CLEARING");
+
         messages.Clear();
-        GameObject.Find("DebugText")?.GetComponent<TextMeshProUGUI>()?.SetText("");
+        guiText.SetText(string.Join("\n", messages));
     }
 }
