@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 3619365905
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: afd178e648c9b38807f4df41ac8be9a2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9e6ad29cbd2df8fbe1a15315db0e51ab
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/maya2sketchfab.fbm/GenericBooksAlt.png
+- Assets/maya2sketchfab.fbm/Window.png
+- Assets/maya2sketchfab.fbm/WoodPlanks2new.png
+- Assets/Textures/Cauldron_DIF.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Ray.png
+- Assets/ErbGameArt/Procedural fire/Textures/Smoke26.png
+- Assets/maya2sketchfab.fbm/WoodDetails.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Anim4_Bubble.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_CircleSoft.png
+- Assets/maya2sketchfab.fbm/rug3.png
+- Assets/maya2sketchfab.fbm/MetalFitting_NoBall.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX2_T_Bat.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Anim7_Electricity.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_AuraRays.png
+- Assets/maya2sketchfab.fbm/WoodPlanks1.png
+- Assets/Textures/spell_bound-new.png
+- Assets/SteamVR/InteractionSystem/Hints/Textures/HintBackground.png
+- Assets/maya2sketchfab.fbm/fire.png
+Dependencies: []

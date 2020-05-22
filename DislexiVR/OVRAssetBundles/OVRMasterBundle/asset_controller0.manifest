@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 2278316894
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e902eb1695cdcb470172340ce917fa96
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: fdf6c57a251b9f6ec27bdd2fe01b033c
+HashAppended: 0
+ClassTypes:
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+Assets:
+- Assets/SteamVR/Models/vr_glove_graspPoses.controller
+- Assets/Animations/Logo.controller
+- Assets/Animations/Mage.controller
+- Assets/SteamVR/InteractionSystem/SnapTurn/snapturnFX.controller
+Dependencies:
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_fbx0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_anim0

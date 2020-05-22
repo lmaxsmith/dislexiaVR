@@ -1,0 +1,49 @@
+ManifestFileVersion: 0
+CRC: 2761781435
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 00b89fb9bd80b24826e94b02de4c782b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6ec64fc1aae14dfa2bf756c730dfde3f
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 20
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+Assets:
+- Assets/Prefabs/Unity2Skfb.fbx
+- Assets/Prefabs/GlassWand_M.fbx
+- Assets/maya2sketchfab.fbx
+- Assets/SteamVR/Models/vr_hand_grabposes.fbx
+- Assets/Prefabs/dog.fbx
+- Assets/SteamVR/Models/vr_glove_model.fbx
+- Assets/SteamVR/Mage.fbx
+- Assets/SteamVR/InteractionSystem/SnapTurn/snapTurnFX.fbx
+- Assets/SteamVR/Models/vr_glove_right_model_slim.fbx
+Dependencies:
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mat0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mat1
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mat2

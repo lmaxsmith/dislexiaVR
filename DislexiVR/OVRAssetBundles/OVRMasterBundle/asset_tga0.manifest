@@ -1,0 +1,20 @@
+ManifestFileVersion: 0
+CRC: 2366063836
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a4d51d31cd84271fd246e86a04bc4629
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2ed26e3ad9f6be9c24f85f5f5b54339d
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/maya2sketchfab.fbm/plaster3.tga
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Star.tga
+- Assets/maya2sketchfab.fbm/staircase2.tga
+- Assets/maya2sketchfab.fbm/staircase.tga
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Smoke_4Frames.tga
+Dependencies: []

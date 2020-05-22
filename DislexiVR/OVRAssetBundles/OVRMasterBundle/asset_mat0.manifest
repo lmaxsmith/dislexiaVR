@@ -1,0 +1,53 @@
+ManifestFileVersion: 0
+CRC: 3046779898
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: d383089318867d47283b21dc164a68d1
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21c99c86a43ad817b2cb7f65458ae090
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/Materials/GenericBooksAlt.mat
+- Assets/Materials/Dome.mat
+- Assets/Materials/ScreenFade.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Misc/CFX_Smoke_4frms.mat
+- Assets/Materials/Lantern.mat
+- Assets/Materials/Door.mat
+- Assets/SteamVR/InteractionSystem/Core/Materials/FallbackHandIndicator.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Light/CFX3_GlowDot MULT.mat
+- Assets/Materials/DrawingMaterial.mat
+- Assets/SteamVR/InteractionSystem/Hints/Materials/ControllerTextHintAnchor.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Light/CFX3_CircleSoft ADDSOFT.mat
+- Assets/ErbGameArt/Procedural fire/Materials/Smoke26.mat
+- Assets/Materials/WoodPlanks2Red.mat
+- Assets/Materials/WoodPlanks1.mat
+- Assets/SteamVR/Models/Materials/knuckles_right.mat
+- Assets/Materials/Curtains.mat
+- Assets/Materials/WoodPlanks2Overlay.mat
+- Assets/Materials/centerpiece2.mat
+- Assets/Materials/Couch_albedometal.mat
+- Assets/Materials/Window.mat
+- Assets/Materials/Orrery.mat
+- Assets/Materials/rug3.mat
+- Assets/Materials/MetalFitting_NoBall.mat
+- Assets/Materials/staircase.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Animated/CFX_Anim_Bubble_Add.mat
+- Assets/Materials/Couch.mat
+- Assets/Materials/Cauldron-CauldronMat.mat
+- Assets/SteamVR/InteractionSystem/Hints/Materials/ControllerButtonHints.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Light/CFX3_GlowStar ADD.mat
+- Assets/Materials/Logo.mat
+Dependencies:
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png1
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_tga0

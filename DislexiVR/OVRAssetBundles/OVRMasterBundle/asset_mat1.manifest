@@ -1,0 +1,54 @@
+ManifestFileVersion: 0
+CRC: 3190138478
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1404748cbb3f7a02748bb035b34addbb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21c99c86a43ad817b2cb7f65458ae090
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/SteamVR/Models/Materials/vr_glove_color_red.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Animated/CFX2_Anim_Bat Multiply.mat
+- Assets/Prefabs/Materials/512 Checker 01.mat
+- Assets/SteamVR/InteractionSystem/SnapTurn/snapTurnArrow.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Stretched/CFX_RayRounded.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Misc/CFX_WhiteCircle.mat
+- Assets/Materials/StoneTable.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Light/CFX3_AuraRays MULT.mat
+- Assets/SteamVR/Models/Materials/vr_glove_color.mat
+- Assets/SteamVR/InteractionSystem/Hints/Materials/ControllerTextHintLine.mat
+- Assets/Materials/Props_Atlas.mat
+- Assets/SteamVR/InteractionSystem/SnapTurn/Materials/snapTurnArrow.mat
+- Assets/Materials/Rug1_texture.mat
+- Assets/Materials/WoodDetails.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Misc/CFX_Star Add.mat
+- Assets/Materials/WoodPlanks2new.mat
+- Assets/Materials/WoodPlanks2.mat
+- Assets/Materials/Props_Atlas2.mat
+- Assets/Materials/orb.mat
+- Assets/Materials/Mat1.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Stretched/CFX3_Ray MULT.mat
+- Assets/Materials/staircase2.mat
+- Assets/Materials/fire.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Animated/CFX_Anim_Poof_AddSoft.mat
+- Assets/Materials/StoneTiles.mat
+- Assets/Trace/Debug Bulb Mat.mat
+- Assets/SteamVR/InteractionSystem/Core/Materials/HoverHighlight.mat
+- Assets/Materials/plaster3.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Electric/CFX_YellowStar.mat
+- Assets/Materials/GenericBooks.mat
+Dependencies:
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png1
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_shader0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_tga0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_jpg0

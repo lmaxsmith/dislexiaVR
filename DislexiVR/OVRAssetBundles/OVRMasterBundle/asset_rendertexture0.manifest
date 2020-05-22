@@ -1,0 +1,16 @@
+ManifestFileVersion: 0
+CRC: 3696782938
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 484f6ddb6ec3fd4b4572744b96891fab
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ca637ba5617d79359be14e488ee64d4d
+HashAppended: 0
+ClassTypes:
+- Class: 84
+  Script: {instanceID: 0}
+Assets:
+- Assets/SteamVR/Textures/overlay.renderTexture
+Dependencies: []

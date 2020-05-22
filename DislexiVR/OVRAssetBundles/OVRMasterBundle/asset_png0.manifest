@@ -1,0 +1,45 @@
+ManifestFileVersion: 0
+CRC: 960030459
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 504421bb24aefa8d7d03fbb62ce0f906
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2ed26e3ad9f6be9c24f85f5f5b54339d
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+Assets:
+- Assets/SteamVR/Models/Materials/vr_glove_normal.png
+- Assets/maya2sketchfab.fbm/Curtains.png
+- Assets/maya2sketchfab.fbm/Props_Atlas.png
+- Assets/maya2sketchfab.fbm/centerpiece2.png
+- Assets/Textures/GlassWand_M_UVChecker_Emissive.png
+- Assets/maya2sketchfab.fbm/Props_Atlas2.png
+- Assets/maya2sketchfab.fbm/WoodPlanks2Red.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_GlowDot.png
+- Assets/maya2sketchfab.fbm/GenericBooks.png
+- Assets/Textures/GlassWand_M_UVChecker_Normal.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_GlowStar.png
+- Assets/maya2sketchfab.fbm/WoodPlanks2.png
+- Assets/maya2sketchfab.fbm/WoodPlanks2Overlay.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_GlowSpike.png
+- Assets/maya2sketchfab.fbm/Couch.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_RayRounded.png
+- Assets/SteamVR/InteractionSystem/Core/Icons/vr_interaction_system.png
+- Assets/maya2sketchfab.fbm/Door.png
+- Assets/maya2sketchfab.fbm/Couch_albedometal.png
+- Assets/maya2sketchfab.fbm/StoneTiles.png
+- Assets/Textures/GlassWand_M_UVChecker_Metallic.png
+- Assets/maya2sketchfab.fbm/Rug1_texture.png
+- Assets/maya2sketchfab.fbm/MetalFitting.png
+- Assets/maya2sketchfab.fbm/Orrery.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Anim4_RoundedLines.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Star Add.png
+- Assets/Textures/GlassWand_M_UVChecker_BaseColor.png
+- Assets/JMO Assets/Cartoon FX/Textures/CFX_T_WhiteCircleSmall.png
+- Assets/maya2sketchfab.fbm/StoneTable.png
+- Assets/maya2sketchfab.fbm/Lantern.png
+Dependencies: []

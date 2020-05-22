@@ -1,0 +1,25 @@
+ManifestFileVersion: 0
+CRC: 2307622022
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6b57f440fed99343176c3d714f12f63a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21c99c86a43ad817b2cb7f65458ae090
+HashAppended: 0
+ClassTypes:
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+Assets:
+- Assets/JMO Assets/Cartoon FX/Materials/Light/CFX3_GlowSpike ADD.mat
+- Assets/JMO Assets/Cartoon FX/Materials/Animated/CFX_Anim_Electricity_Add.mat
+- Assets/Materials/MetalFitting.mat
+- Assets/SteamVR/Models/Materials/models_hands_vr_glove.vmat.mat
+Dependencies:
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png1

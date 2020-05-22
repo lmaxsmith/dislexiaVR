@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 2876635751
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 3ccb191db4e6a9f078821b593dc275ae
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 3f7d0c5e0986ec71841622bcb2f9be1c
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+Assets:
+- Assets/Sounds/05_02_you_almost_got_it.mp3
+- Assets/Sounds/zapsplat_fantasy_magic_chime_ping_wand_fairy_godmother_007_38293.mp3
+- Assets/Audio/its_hard_to_cast_spells.mp3
+- Assets/Sounds/bgmusic.mp3
+- Assets/Audio/you_cast_the_spell.mp3
+- Assets/Sounds/04_01_here_is_the_magic_word.mp3
+- Assets/Sounds/04_02_you_almost_got_it.mp3
+- Assets/Sounds/zapsplat_foley_wood_small_heavy_dense_piece_set_down_wooden_floor_001_32341.mp3
+- Assets/Sounds/WizardWelcome.mp3
+- Assets/Sounds/04_03_great_job.mp3
+- Assets/Sounds/05_04_smaller_letter.mp3
+- Assets/Sounds/zapsplat_fantasy_magic_chime_ping_wand_fairy_godmother_017_38303.mp3
+- Assets/Sounds/08_03_you_cast_the_spell.mp3
+- Assets/Sounds/tutorial.mp3
+- Assets/Sounds/05_01_now_try_to_write.mp3
+- Assets/Sounds/08_01_now_read_the_word.mp3
+- Assets/Sounds/05_03b_good_try.mp3
+- Assets/Sounds/little_robot_sound_factory_fantasy_Spell_01.mp3
+- Assets/Sounds/08_02_its_hard_to_cast_spells.mp3
+Dependencies: []
