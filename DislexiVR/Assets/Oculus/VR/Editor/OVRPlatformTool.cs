@@ -116,7 +116,7 @@ namespace Assets.Oculus.VR.Editor
 			SetOVRProjectConfig(OVRPlatformToolSettings.TargetPlatform);
 			SetDirtyOnGUIChange();
 
-			commandMenuScroll = EditorGUILayout.BeginScrollView(commandMenuScroll, GUILayout.Height(Screen.height / 2));
+			commandMenuScroll = EditorGUILayout.BeginScrollView(commandMenuScroll, GUILayout.Height(position.height / 2));
 			{
 				// Add the UI Form
 				EditorGUI.BeginChangeCheck();
@@ -330,6 +330,11 @@ namespace Assets.Oculus.VR.Editor
 			// Add an Upload button
 			GUI.enabled = !activeProcess;
 			GUIContent btnTxt = new GUIContent("Upload");
+#if UNITY_EDITOR_OSX
+			GUI.enabled = false;
+			btnTxt = new GUIContent("Upload (only on Windows)");
+#endif
+
 			var rt = GUILayoutUtility.GetRect(btnTxt, GUI.skin.button, GUILayout.ExpandWidth(false));
 			var btnYPos = rt.center.y;
 			rt.center = new Vector2(EditorGUIUtility.currentViewWidth / 2 - rt.width / 2 - buttonPadding, btnYPos);
@@ -433,7 +438,7 @@ namespace Assets.Oculus.VR.Editor
 		static void ExecuteCommand(TargetPlatform targetPlatform)
 		{
 			string dataPath = Application.dataPath;
-			
+
 			// If we already have a copy of the platform util, check if it needs to be updated
 			if (!ranSelfUpdate && File.Exists(dataPath + "/Oculus/VR/Editor/Tools/ovr-platform-util.exe"))
 			{
@@ -502,6 +507,11 @@ namespace Assets.Oculus.VR.Editor
 
 		static void CheckForUpdate(string dataPath)
 		{
+#if UNITY_EDITOR_OSX
+			OVRPlatformTool.log += "Checking for update...\n";
+			OVRPlatformTool.log += "Platform utility not available for OSX.\n";
+			return;
+#endif
 			string platformUtilPath = CheckForPlatformUtil(dataPath);
 			InitializePlatformUtilProcess(platformUtilPath, "self-update");
 
@@ -535,8 +545,9 @@ namespace Assets.Oculus.VR.Editor
 				ovrPlatUtilProcess.Start();
 				ovrPlatUtilProcess.BeginOutputReadLine();
 			}
-			catch
+			catch (Exception e)
 			{
+				UnityEngine.Debug.Log($"CFU Exception caught: {e}");
 				if (ThrowPlatformUtilStartupError(platformUtilPath))
 				{
 					CheckForUpdate(dataPath);
@@ -546,6 +557,11 @@ namespace Assets.Oculus.VR.Editor
 
 		static void LoadRedistPackages(string dataPath)
 		{
+#if UNITY_EDITOR_OSX
+			OVRPlatformTool.log += "Loading redistributable packages...\n";
+			OVRPlatformTool.log += "Platform utility not available for OSX.\n";
+			return;
+#endif
 			// Check / Download the platform util and call list-redists on it
 			activeProcess = true;
 			string platformUtilPath = CheckForPlatformUtil(dataPath);
@@ -595,8 +611,9 @@ namespace Assets.Oculus.VR.Editor
 					OVRPlatformTool.log += "Redistributable packages up to date.\n";
 				}
 			}
-			catch
+			catch (Exception e)
 			{
+				UnityEngine.Debug.Log($"LRP Exception caught: {e}");
 				if (ThrowPlatformUtilStartupError(platformUtilPath))
 				{
 					LoadRedistPackages(dataPath);
@@ -606,6 +623,12 @@ namespace Assets.Oculus.VR.Editor
 
 		static void Command(TargetPlatform targetPlatform, string dataPath, string uploadCommand)
 		{
+#if UNITY_EDITOR_OSX
+			OVRPlatformTool.log += $"Attempting to execute command: {uploadCommand}...\n";
+			OVRPlatformTool.log += "Platform utility not available for OSX.\n";
+			return;
+#endif
+
 			string platformUtilPath = CheckForPlatformUtil(dataPath);
 
 			activeProcess = true;
@@ -640,8 +663,9 @@ namespace Assets.Oculus.VR.Editor
 				ovrPlatUtilProcess.BeginOutputReadLine();
 				ovrPlatUtilProcess.BeginErrorReadLine();
 			}
-			catch
+			catch (Exception e)
 			{
+				UnityEngine.Debug.Log($"Command Exception caught: {e}");
 				if (ThrowPlatformUtilStartupError(platformUtilPath))
 				{
 					Command(targetPlatform, dataPath, uploadCommand);
@@ -735,7 +759,7 @@ namespace Assets.Oculus.VR.Editor
 				}
 
 				// Add Gamepad Emulation
-				if (OVRPlatformToolSettings.RiftGamepadEmulation > OVRPlatformToolSettings.GamepadType.OFF && 
+				if (OVRPlatformToolSettings.RiftGamepadEmulation > OVRPlatformToolSettings.GamepadType.OFF &&
 					OVRPlatformToolSettings.RiftGamepadEmulation <= OVRPlatformToolSettings.GamepadType.LEFT_D_PAD)
 				{
 					command += " --gamepad-emulation ";

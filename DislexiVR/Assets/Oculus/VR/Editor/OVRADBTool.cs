@@ -54,7 +54,16 @@ public class OVRADBTool
 			this.androidSdkRoot = this.androidSdkRoot.Remove(this.androidSdkRoot.Length - 1);
 		}
 		androidPlatformToolsPath = Path.Combine(this.androidSdkRoot, "platform-tools");
-		adbPath = Path.Combine(androidPlatformToolsPath, "adb.exe");
+
+		string adbExeName = "";
+#if UNITY_EDITOR_WIN
+		adbExeName = "adb.exe";
+#elif UNITY_EDITOR_OSX
+		adbExeName = "adb";
+#else
+        throw new Exception("Unsupported operating system for this module!");
+#endif
+		adbPath = Path.Combine(androidPlatformToolsPath, adbExeName);
 		isReady = File.Exists(adbPath);
 	}
 
@@ -112,7 +121,7 @@ public class OVRADBTool
 		string errorString;
 
 		RunCommand(new string[] { "devices" }, null, out outputString, out errorString);
-		string[] devices = outputString.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+		string[] devices = outputString.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
 		List<string> deviceList = new List<string>(devices);
 		deviceList.RemoveAt(0);

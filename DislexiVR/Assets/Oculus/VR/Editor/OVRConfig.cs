@@ -65,7 +65,9 @@ public class OVRConfig : ScriptableObject
 			androidSDKPath = EditorPrefs.GetString("AndroidSdkRoot");
 		}
 
+#if UNITY_EDITOR_WIN
 		androidSDKPath = androidSDKPath.Replace("/", "\\");
+#endif
 		// Validate sdk path and notify user if path does not exist.
 		if (!Directory.Exists(androidSDKPath))
 		{
@@ -98,7 +100,7 @@ public class OVRConfig : ScriptableObject
 
 		if (useEmbedded)
 		{
-			libPath = Path.Combine(BuildPipeline.GetPlaybackEngineDirectory(BuildTarget.Android, BuildOptions.None), "Tools\\gradle\\lib");
+			libPath = Path.Combine(BuildPipeline.GetPlaybackEngineDirectory(BuildTarget.Android, BuildOptions.None), "Tools", "gradle", "lib");
 		}
 		else
 		{
@@ -108,7 +110,9 @@ public class OVRConfig : ScriptableObject
 		libPath = Path.Combine(EditorApplication.applicationContentsPath, "PlaybackEngines\\AndroidPlayer\\Tools\\gradle\\lib");
 #endif
 
+#if UNITY_EDITOR_WIN
 		libPath = libPath.Replace("/", "\\");
+#endif
 		if (!string.IsNullOrEmpty(libPath) && Directory.Exists(libPath))
 		{
 			string[] gradleJar = Directory.GetFiles(libPath, "gradle-launcher-*.jar");
@@ -137,7 +141,6 @@ public class OVRConfig : ScriptableObject
 	// Returns path to the Java executable in the JDK
 	public string GetJDKPath(bool throwError = true)
 	{
-#if UNITY_EDITOR_WIN
 		// Check for use of embedded path or user defined 
 		bool useEmbedded = EditorPrefs.GetBool("JdkUseEmbedded") || string.IsNullOrEmpty(EditorPrefs.GetString("JdkPath"));
 
@@ -145,7 +148,13 @@ public class OVRConfig : ScriptableObject
 		if (useEmbedded)
 		{
 #if UNITY_2019_1_OR_NEWER
-			exePath = Path.Combine(BuildPipeline.GetPlaybackEngineDirectory(BuildTarget.Android, BuildOptions.None), "Tools\\OpenJDK\\Windows\\bin");
+#if UNITY_EDITOR_WIN
+			exePath = Path.Combine(BuildPipeline.GetPlaybackEngineDirectory(BuildTarget.Android, BuildOptions.None), "Tools", "OpenJDK", "Windows", "bin");
+#elif UNITY_EDITOR_OSX
+			exePath = Path.Combine(BuildPipeline.GetPlaybackEngineDirectory(BuildTarget.Android, BuildOptions.None), "OpenJDK", "bin");
+#else
+			throw new Exception("Finding the JDK on this platform has not been implemented!")
+#endif
 #else
 			exePath = Path.Combine(EditorApplication.applicationContentsPath, "PlaybackEngines\\AndroidPlayer\\Tools\\OpenJDK\\Windows\\bin");
 #endif
@@ -155,8 +164,14 @@ public class OVRConfig : ScriptableObject
 			exePath = Path.Combine(EditorPrefs.GetString("JdkPath"), "bin");
 		}
 
+#if UNITY_EDITOR_WIN
 		jdkPath = Path.Combine(exePath, "java.exe");
 		jdkPath = jdkPath.Replace("/", "\\");
+#elif UNITY_EDITOR_OSX
+		jdkPath = Path.Combine(exePath, "java");
+#else
+		throw new Exception("Finding the JDK on this platform has not been implemented!")
+#endif
 
 		// Validate gradle path and notify user if path does not exist.
 		if (!File.Exists(jdkPath))
@@ -181,7 +196,7 @@ public class OVRConfig : ScriptableObject
 			}
 			return string.Empty;
 		}
-#endif
+
 		EditorUtility.SetDirty(Instance);
 		return jdkPath;
 	}

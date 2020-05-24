@@ -58,7 +58,7 @@ partial class OculusBuildApp : EditorWindow
 		AssetDatabase.SaveAssets();
 	}
 
-#if UNITY_EDITOR_WIN && UNITY_2018_3_OR_NEWER && UNITY_ANDROID
+#if UNITY_2018_3_OR_NEWER && UNITY_ANDROID
 	// Build setting constants
 	const string REMOTE_APK_PATH = "/sdcard/Oculus/Temp";
 	const float USB_TRANSFER_SPEED_THRES = 25.0f;
@@ -513,10 +513,12 @@ partial class OculusBuildApp : EditorWindow
 		if (adbTool.isReady)
 		{
 			string apkPathLocal;
-			string gradleExportFolder = Path.Combine(Path.Combine(gradleExport, productName), "build\\outputs\\apk\\debug");
+			string gradleExportFolder = Path.Combine(gradleExport, productName, "build", "outputs", "apk", "debug");
 
 			// Check to see if gradle output directory exists
+#if UNITY_EDITOR_WIN
 			gradleExportFolder = gradleExportFolder.Replace("/", "\\");
+#endif
 			if (!Directory.Exists(gradleExportFolder))
 			{
 				UnityEngine.Debug.LogError("Could not find the gradle project at the expected path: " + gradleExportFolder);
@@ -653,5 +655,5 @@ partial class OculusBuildApp : EditorWindow
 		progressMessage = message;
 		UnityEngine.Debug.Log("OVRBuild: " + message);
 	}
-#endif //UNITY_EDITOR_WIN && UNITY_2018_1_OR_NEWER && UNITY_ANDROID
-		}
+#endif //UNITY_2018_3_OR_NEWER && UNITY_ANDROID
+}

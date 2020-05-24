@@ -1,4 +1,4 @@
-#if UNITY_EDITOR_WIN && UNITY_ANDROID
+#if UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -428,8 +428,8 @@ public class OVRBundleManager
 			remoteBundle.Unload(true);
 
 			// Load hashes from local manifest
-			AssetBundle localBundle = AssetBundle.LoadFromFile(BUNDLE_MANAGER_OUTPUT_PATH + "\\" + BUNDLE_MANAGER_MASTER_BUNDLE
-					+ "\\" + BUNDLE_MANAGER_MASTER_BUNDLE);
+			string localBundlePath = Path.Combine(BUNDLE_MANAGER_OUTPUT_PATH, BUNDLE_MANAGER_MASTER_BUNDLE, BUNDLE_MANAGER_MASTER_BUNDLE);
+			AssetBundle localBundle = AssetBundle.LoadFromFile(localBundlePath);
 			if (localBundle == null)
 			{
 				OVRBundleTool.PrintError("<color=red>Failed to load local asset bundle manifest file.\n</color>");

@@ -1,4 +1,4 @@
-#if UNITY_EDITOR_WIN && UNITY_ANDROID
+#if UNITY_ANDROID
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -386,7 +386,7 @@ public class OVRBundleTool : EditorWindow
 				{
 					// adb "list package" command returns all package names that contains the given query package name
 					// Need to check if the transition package name is matched exactly
-					if (matchedPackageList.Contains("package:" + transitionPackageName + "\r\n"))
+					if (matchedPackageList.Contains("package:" + transitionPackageName + Environment.NewLine))
 					{
 						if (useOptionalTransitionApkPackage)
 						{
