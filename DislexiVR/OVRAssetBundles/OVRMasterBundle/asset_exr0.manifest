@@ -1,16 +1,19 @@
 ManifestFileVersion: 0
-CRC: 1930461466
+CRC: 2477679053
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e3ef8efb9bf102955d22ff56c8675f59
+    Hash: 3012f08cc2048081e42aae74d0f52113
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 9f7a8bc794068968cebc4add383d9e5e
+    Hash: 2ed26e3ad9f6be9c24f85f5f5b54339d
 HashAppended: 0
 ClassTypes:
-- Class: 89
+- Class: 28
   Script: {instanceID: 0}
 Assets:
-- Assets/Scenes/gameScene/ReflectionProbe-0.exr
+- Assets/Scenes/gameScene - with audio/Lightmap-1_comp_light.exr
+- Assets/Scenes/gameScene - with audio/Lightmap-0_comp_light.exr
+- Assets/Scenes/gameScene - with audio/Lightmap-2_comp_light.exr
+- Assets/Scenes/gameScene - with audio/Lightmap-3_comp_light.exr
 Dependencies: []

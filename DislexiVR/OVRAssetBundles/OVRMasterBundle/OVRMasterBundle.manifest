@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 1298128679
+CRC: 4154469128
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -14,14 +14,15 @@ AssetBundleManifest:
         Dependency_1: asset_mat0
         Dependency_2: asset_mat1
         Dependency_3: asset_mat2
-        Dependency_4: asset_controller0
-        Dependency_5: asset_prefab0
-        Dependency_6: asset_fbx0
-        Dependency_7: asset_mp30
-        Dependency_8: asset_asset0
-        Dependency_9: asset_ogg0
-        Dependency_10: asset_obj0
-        Dependency_11: asset_exr0
+        Dependency_4: asset_png0
+        Dependency_5: asset_png1
+        Dependency_6: asset_controller0
+        Dependency_7: asset_prefab0
+        Dependency_8: asset_fbx0
+        Dependency_9: asset_mp30
+        Dependency_10: asset_asset0
+        Dependency_11: asset_obj0
+        Dependency_12: asset_exr0
     Info_2:
       Name: asset_mat0
       Dependencies:
@@ -89,17 +90,17 @@ AssetBundleManifest:
         Dependency_1: asset_ttf0
         Dependency_2: asset_prefab0
     Info_14:
-      Name: asset_ogg0
-      Dependencies: {}
-    Info_15:
       Name: asset_obj0
       Dependencies:
         Dependency_0: asset_mat0
-    Info_16:
+    Info_15:
       Name: asset_tga0
       Dependencies: {}
-    Info_17:
+    Info_16:
       Name: asset_anim0
+      Dependencies: {}
+    Info_17:
+      Name: asset_exr0
       Dependencies: {}
     Info_18:
       Name: asset_rendertexture0
@@ -112,7 +113,4 @@ AssetBundleManifest:
       Dependencies: {}
     Info_21:
       Name: asset_wav0
-      Dependencies: {}
-    Info_22:
-      Name: asset_exr0
       Dependencies: {}

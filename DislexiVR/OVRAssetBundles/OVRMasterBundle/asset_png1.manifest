@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3619365905
+CRC: 4192954226
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: afd178e648c9b38807f4df41ac8be9a2
+    Hash: 06ae14f20c4d70514430e23d469cfcce
   TypeTreeHash:
     serializedVersion: 2
     Hash: 9e6ad29cbd2df8fbe1a15315db0e51ab
@@ -14,6 +14,8 @@ ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 Assets:
+- Assets/maya2sketchfab.fbm/StoneTable.png
+- Assets/maya2sketchfab.fbm/Lantern.png
 - Assets/maya2sketchfab.fbm/GenericBooksAlt.png
 - Assets/maya2sketchfab.fbm/Window.png
 - Assets/maya2sketchfab.fbm/WoodPlanks2new.png
@@ -22,6 +24,8 @@ Assets:
 - Assets/ErbGameArt/Procedural fire/Textures/Smoke26.png
 - Assets/maya2sketchfab.fbm/WoodDetails.png
 - Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Anim4_Bubble.png
+- Assets/Scenes/gameScene - with audio/Lightmap-2_comp_dir.png
+- Assets/Scenes/gameScene - with audio/Lightmap-0_comp_dir.png
 - Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_CircleSoft.png
 - Assets/maya2sketchfab.fbm/rug3.png
 - Assets/maya2sketchfab.fbm/MetalFitting_NoBall.png

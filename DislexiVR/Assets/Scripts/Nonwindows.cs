@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Nonwindows.Speech
 {
@@ -7,6 +8,11 @@ namespace Nonwindows.Speech
     public class PhraseRecognizedEventArgs
     {
         public string text;
+
+        public PhraseRecognizedEventArgs(string _text)
+        {
+            text = _text;
+        }
     }
 
     public class KeywordRecognizer
@@ -18,9 +24,11 @@ namespace Nonwindows.Speech
 
         }
 
-        public void Start()
+        public async void Start()
         {
-
+            UnityEngine.Microphone.Start(UnityEngine.Microphone.devices[0], false, 3, 16000);
+            await Task.Delay(4000);
+            OnPhraseRecognized?.Invoke(new PhraseRecognizedEventArgs("bat"));
         }
 
         public void Stop()

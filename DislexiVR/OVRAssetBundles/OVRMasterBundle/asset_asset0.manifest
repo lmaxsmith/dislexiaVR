@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3012245873
+CRC: 1259339406
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3abbf5c02552d46d20a214441dcb6ef8
+    Hash: ea3b68161c106e3945725926a16374b5
   TypeTreeHash:
     serializedVersion: 2
     Hash: d115f23fd868f2907e6d701e13c40d41
@@ -31,7 +31,6 @@ Assets:
 - Assets/TextMesh Pro/Fonts/LettersForLearnersDots-q932 SDF.asset
 - Assets/Trace/d.asset
 - Assets/Trace/b.asset
-- Assets/Trace/a.asset
 - Assets/TextMesh Pro/Fonts/LettersForLearners-A7wL SDF.asset
 - Assets/JMO Assets/Cartoon FX/Mesh/CFX_Mesh_Circular1.5.asset
 - Assets/Trace/c.asset

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 960030459
+CRC: 12862662
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 504421bb24aefa8d7d03fbb62ce0f906
+    Hash: 5463574354b3e1447df21a8bb52a3a8d
   TypeTreeHash:
     serializedVersion: 2
     Hash: 2ed26e3ad9f6be9c24f85f5f5b54339d
@@ -17,8 +17,10 @@ Assets:
 - Assets/maya2sketchfab.fbm/Props_Atlas.png
 - Assets/maya2sketchfab.fbm/centerpiece2.png
 - Assets/Textures/GlassWand_M_UVChecker_Emissive.png
+- Assets/Scenes/gameScene - with audio/Lightmap-1_comp_dir.png
 - Assets/maya2sketchfab.fbm/Props_Atlas2.png
 - Assets/maya2sketchfab.fbm/WoodPlanks2Red.png
+- Assets/Scenes/gameScene - with audio/Lightmap-3_comp_dir.png
 - Assets/JMO Assets/Cartoon FX/Textures/CFX3_T_GlowDot.png
 - Assets/maya2sketchfab.fbm/GenericBooks.png
 - Assets/Textures/GlassWand_M_UVChecker_Normal.png
@@ -40,6 +42,4 @@ Assets:
 - Assets/JMO Assets/Cartoon FX/Textures/CFX_T_Star Add.png
 - Assets/Textures/GlassWand_M_UVChecker_BaseColor.png
 - Assets/JMO Assets/Cartoon FX/Textures/CFX_T_WhiteCircleSmall.png
-- Assets/maya2sketchfab.fbm/StoneTable.png
-- Assets/maya2sketchfab.fbm/Lantern.png
 Dependencies: []

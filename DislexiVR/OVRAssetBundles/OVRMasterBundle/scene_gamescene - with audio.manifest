@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4251204278
+CRC: 394577280
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b51f0c146a4d75058fa5cdce53cc930b
+    Hash: 982b9ff5578a3902db4320690e98472f
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b36eb4f0741e250c220b83f8148a4e1d
+    Hash: 5f4a85dfc954e02c016a8a63f5fb36e6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -42,8 +42,6 @@ ClassTypes:
 - Class: 83
   Script: {instanceID: 0}
 - Class: 84
-  Script: {instanceID: 0}
-- Class: 89
   Script: {instanceID: 0}
 - Class: 90
   Script: {instanceID: 0}
@@ -206,11 +204,12 @@ Dependencies:
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mat0
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mat1
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mat2
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png0
+- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_png1
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_controller0
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_prefab0
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_fbx0
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_mp30
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_asset0
-- /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_ogg0
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_obj0
 - /Users/kaicurtis/personal/code/dislexiaVR/DislexiVR/OVRAssetBundles/OVRMasterBundle/asset_exr0
